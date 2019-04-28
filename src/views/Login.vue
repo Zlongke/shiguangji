@@ -23,7 +23,7 @@
       <van-button type="warning" size="large" to="/Regist">注册</van-button>
       <van-button type="primary" size="large" >登录</van-button>
     </div>
-
+    <button>按钮</button>
   </div>
 </template>
 
