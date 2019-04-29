@@ -19,11 +19,11 @@
 
 
     </van-cell-group>
-    <div class="bottom">
-      <van-button type="warning" size="large" to="/Regist">注册</van-button>
-      <van-button type="primary" size="large" >登录</van-button>
-    </div>
-    <button>按钮</button>
+
+
+      <van-button class="bottom" type="primary" size="large" @click="login()">登录</van-button>
+
+
   </div>
 </template>
 
@@ -40,6 +40,11 @@ export default {
   mounted() {
     this.$emit('toParent',this.title)
   },
+  methods: {
+    login(){
+      this.$router.push('/home')
+    }
+  },
 
 }
 </script>
@@ -48,6 +53,10 @@ export default {
     margin-top: 40vh;
   }
   .bottom{
-   margin-top: 10vh;
+  position: fixed;
+  bottom: 34px;
+  background: #FFB64B 100%;
+  color: #101010 100%;
+  height: 65px;
   }
 </style>

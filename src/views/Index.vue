@@ -1,13 +1,13 @@
 <template>
   <div>
-    <Head :name="title"/>
+    <LoginTop :name="title"/>
     <div class="container"></div>
     <router-view @toParent="tap"></router-view>
   </div>
 </template>
 
 <script>
-import Head from '@/components/Head'
+import LoginTop from '@/components/LoginTop'
 import axios from 'axios'
 export default {
   name:'Index',
@@ -24,7 +24,7 @@ export default {
     }
   },
   components:{
-    Head
+    LoginTop
   },
   mounted() {
     axios({

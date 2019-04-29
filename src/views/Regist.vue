@@ -32,10 +32,10 @@
       />
 
     </van-cell-group>
-    <div class="bottom">
-      <van-button type="warning" size="large" >注册</van-button>
-      <van-button type="primary" size="large" to="Login">登录</van-button>
-    </div>
+
+      <van-button class="bottom" type="warning" size="large" >注册</van-button>
+
+
 
   </div>
 </template>
@@ -63,6 +63,10 @@ export default {
     margin-top: 40vh;
   }
   .bottom{
-   margin-top: 5vh;
+   position: fixed;
+  bottom: 34px;
+  background: #FFB64B 100%;
+  color: #101010 100%;
+  height: 65px;
   }
 </style>
