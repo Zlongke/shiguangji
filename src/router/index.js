@@ -10,6 +10,11 @@ import Live from '@/views/Live'
 import Message from '@/views/Message'
 import Mine from '@/views/Mine'
 import Time from '@/views/Time'
+import Yunxiangce from '@/views/Yunxiangce'
+import Chengzhangjilu from '@/views/Chengzhangjilu'
+import Chengjiu from '@/views/Chengjiu'
+import Qinyoutuan from '@/views/Qinyoutuan'
+
 
 
 
@@ -17,58 +22,75 @@ import Time from '@/views/Time'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
-      redirect:'/login',
+      redirect: '/login',
       name: 'Index',
       component: Index,
-      children:[
-        {
-          path:'/login',
-          name:'Login',
-          component:Login
+      children: [{
+          path: '/login',
+          name: 'Login',
+          component: Login
         },
         {
-          path:'/regist',
-          name:'Regist',
-          component:Regist
+          path: '/regist',
+          name: 'Regist',
+          component: Regist
         },
 
       ]
     },
     {
-      path:'/home',
-      name:'Home',
-      redirect:'/jinnang',
-      component:Home,
-      children:[
-        {
-          path:'/jinnang',
-          name:'Jinnang',
-          component:Jinnang
+      path: '/home',
+      name: 'Home',
+      redirect: '/jinnang',
+      component: Home,
+      children: [{
+          path: '/jinnang',
+          name: 'Jinnang',
+          component: Jinnang
         },
         {
-          path:'/live',
-          name:'Live',
-          component:Live
+          path: '/live',
+          name: 'Live',
+          component: Live
         },
         {
-          path:'/message',
-          name:'Message',
-          component:Message
+          path: '/message',
+          name: 'Message',
+          component: Message
         },
         {
-          path:'/mine',
-          name:'Mine',
-          component:Mine
+          path: '/mine',
+          name: 'Mine',
+          component: Mine
         },
         {
-          path:'/time',
-          name:'Time',
-          component:Time
+          path: '/time',
+          name: 'Time',
+          component: Time
         },
       ]
-    }
+    },
+    {
+      path: '/yunxiangce',
+      name: 'Yunxiangce',
+      component: Yunxiangce
+    },
+    {
+      path: '/chengzhangjilu',
+      name: ' Chengzhangjilu',
+      component: Chengzhangjilu
+    },
+    {
+      path: '/chengjiu',
+      name: ' Chengjiu',
+      component: Chengjiu
+    },
+    {
+      path: '/qinyoutuan',
+      name: ' Qinyoutuan',
+      component: Qinyoutuan
+    },
   ]
 })
