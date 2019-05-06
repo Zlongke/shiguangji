@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Head :name="title"/>
+    <!-- <Head :name="title"/> -->
     <div class="container">
       <router-view @totitle="tap"></router-view>
     </div>
@@ -16,12 +16,12 @@
 </template>
 
 <script>
-import Head from '@/components/Head'
+// import Head from '@/components/Head'
 export default {
   name:'Home',
-  components:{
-    Head
-  },
+  // components:{
+  //   Head
+  // },
   data() {
     return {
       active:0,
@@ -38,8 +38,8 @@ export default {
 </script>
 
 <style scoped>
-  .container{
+  /* .container{
     margin-top: 46px;
     margin-bottom: 50px;
-  }
+  } */
 </style>
