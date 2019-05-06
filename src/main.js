@@ -6,10 +6,14 @@ import router from './router'
 import Vant from 'vant';
 import 'vant/lib/index.css';
 import store from './store';
+import {
+  ImagePreview
+} from 'vant';
+
 
 
 Vue.use(Vant);
-
+Vue.use(ImagePreview);
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

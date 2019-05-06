@@ -19,4 +19,7 @@ p {
 li {
   list-style: none;
 }
+img {
+  border: none;
+}
 </style>

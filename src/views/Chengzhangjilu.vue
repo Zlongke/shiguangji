@@ -2,7 +2,7 @@
   <div>
     <Head :name="title"/>
     <div class="container">
-      <van-tabs v-model="active" color="#cecece" line-height="2">
+      <van-tabs v-model="active" color="#cecece">
         <van-tab title="记录列表">
           <div class="list">
             <p>

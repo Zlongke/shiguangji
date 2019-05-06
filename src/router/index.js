@@ -10,11 +10,12 @@ import Live from '@/views/Live'
 import Message from '@/views/Message'
 import Mine from '@/views/Mine'
 import Time from '@/views/Time'
+//时光记模块
 import Yunxiangce from '@/views/Yunxiangce'
 import Chengzhangjilu from '@/views/Chengzhangjilu'
 import Chengjiu from '@/views/Chengjiu'
 import Qinyoutuan from '@/views/Qinyoutuan'
-
+import Daoruxiangce from '@/views/Daoruxiangce'
 
 
 
@@ -91,6 +92,11 @@ export default new Router({
       path: '/qinyoutuan',
       name: ' Qinyoutuan',
       component: Qinyoutuan
+    },
+    {
+      path: '/daoruxiangce',
+      name: ' Daoruxiangce',
+      component: Daoruxiangce
     },
   ]
 })
