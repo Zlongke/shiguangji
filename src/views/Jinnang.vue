@@ -1,23 +1,26 @@
 <template>
   <div>
-    <h1>锦囊</h1>
+    <h1>{{username}}</h1>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
-  name:'Jinnang',
+  name: "Jinnang",
   data() {
     return {
-      title:'锦囊'
-    }
+      title: "锦囊"
+    };
+  },
+  computed: {
+    ...mapState(["username"])
   },
   mounted() {
-    this.$emit('totitle',this.title)
-  },
-}
+    this.$emit("totitle", this.title);
+  }
+};
 </script>
 
 <style scoped>
-
 </style>

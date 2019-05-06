@@ -1,47 +1,50 @@
 <template>
   <div>
-    <LoginTop :name="title"/>
+    <LoginTop :name="bgc" :name1="bgc1"/>
     <div class="container"></div>
-    <router-view @toParent="tap"></router-view>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import LoginTop from '@/components/LoginTop'
-import axios from 'axios'
+import LoginTop from "@/components/LoginTop";
+import axios from "axios";
 export default {
-  name:'Index',
+  name: "Index",
   data() {
     return {
-      title:''
-    }
+      bgc: "",
+      bgc1: ""
+    };
   },
   methods: {
-
-    tap(msg){
+    tap(msg) {
       //console.log(msg)
-      this.title = msg;
+      this.bgc = msg;
+    },
+    tap1(msg) {
+      this.bgc1 = msg;
     }
   },
-  components:{
+  components: {
     LoginTop
   },
   mounted() {
     axios({
-      url:'http://jx.xuzhixiang.top/ap/api/productlist.php',
-      params:{uid:2000}
-    }).then((data)=>{
-      console.log(data.data.data)
-    })
-  },
-}
+      url: "http://jx.xuzhixiang.top/ap/api/productlist.php",
+      params: { uid: 2000 }
+    }).then(data => {
+      console.log(data.data.data);
+    });
+  }
+};
 </script>
 
 <style scoped>
-  h1{
-    color: yellow;
-  }
-  .container{
-    margin-top: 46px;
-  }
+h1 {
+  color: yellow;
+}
+.container {
+  margin-top: 46px;
+}
 </style>

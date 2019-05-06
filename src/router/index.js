@@ -10,6 +10,7 @@ import Live from '@/views/Live'
 import Message from '@/views/Message'
 import Mine from '@/views/Mine'
 import Time from '@/views/Time'
+
 import Attention from '@/views/Attention'
 import Afterattention from '@/views/Afterattention'
 import Livecommon from '@/views/Livecommon'
@@ -29,44 +30,51 @@ import Cart from '@/views/Cart'
 import Order from '@/views/Order'
 import Coupon from '@/views/Coupon'
 
+import Yunxiangce from '@/views/Yunxiangce'
+import Chengzhangjilu from '@/views/Chengzhangjilu'
+import Chengjiu from '@/views/Chengjiu'
+import Qinyoutuan from '@/views/Qinyoutuan'
+
+
+
+
+
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
-      redirect:'/login',
+      redirect: '/login',
       name: 'Index',
       component: Index,
-      children:[
-        {
-          path:'/login',
-          name:'Login',
-          component:Login
+      children: [{
+          path: '/login',
+          name: 'Login',
+          component: Login
         },
         {
-          path:'/regist',
-          name:'Regist',
-          component:Regist
+          path: '/regist',
+          name: 'Regist',
+          component: Regist
         },
 
       ]
     },
     // 登录注册结束
     {
-      path:'/home',
-      name:'Home',
-      redirect:'/jinnang',
-      component:Home,
-      children:[
-        {
-          path:'/jinnang',
-          name:'Jinnang',
-          component:Jinnang
+      path: '/home',
+      name: 'Home',
+      redirect: '/jinnang',
+      component: Home,
+      children: [{
+          path: '/jinnang',
+          name: 'Jinnang',
+          component: Jinnang
         },
   // 生活
         {
+
           path:'/live',
           redirect:'/attention',
           name:'Live',
@@ -90,27 +98,31 @@ export default new Router({
             },
           ]
          
+
+
+
         },
        
 
 // 生活结束
         {
-          path:'/message',
-          name:'Message',
-          component:Message
+          path: '/message',
+          name: 'Message',
+          component: Message
         },
         {
-          path:'/mine',
-          name:'Mine',
-          component:Mine
+          path: '/mine',
+          name: 'Mine',
+          component: Mine
         },
         {
-          path:'/time',
-          name:'Time',
-          component:Time
+          path: '/time',
+          name: 'Time',
+          component: Time
         },
       ]
     },
+
 
     // 生活社区
     {
@@ -200,7 +212,29 @@ export default new Router({
 
 
     ]
-  }
+  },
+
+
+    {
+      path: '/yunxiangce',
+      name: 'Yunxiangce',
+      component: Yunxiangce
+    },
+    {
+      path: '/chengzhangjilu',
+      name: ' Chengzhangjilu',
+      component: Chengzhangjilu
+    },
+    {
+      path: '/chengjiu',
+      name: ' Chengjiu',
+      component: Chengjiu
+    },
+    {
+      path: '/qinyoutuan',
+      name: ' Qinyoutuan',
+      component: Qinyoutuan
+    },
 
   ]
 })

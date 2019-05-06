@@ -16,30 +16,38 @@
 </template>
 
 <script>
-// import Head from '@/components/Head'
+
+
+
+import Head from "@/components/Head";
 export default {
-  name:'Home',
-  // components:{
-  //   Head
-  // },
+  name: "Home",
+  components: {
+    Head
+  },
+
   data() {
     return {
-      active:0,
-      title:'锦囊'
-    }
+      active: 0,
+      title: "锦囊"
+    };
   },
   methods: {
-    tap(msg){
+    tap(msg) {
       //console.log(msg)
       this.title = msg;
     }
-  },
-}
+  }
+};
 </script>
 
 <style scoped>
-  /* .container{
-    margin-top: 46px;
-    margin-bottom: 50px;
-  } */
+
+
+
+.container {
+  /* margin-top: 46px; */
+  margin-bottom: 50px;
+}
+
 </style>
