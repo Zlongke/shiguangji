@@ -12,6 +12,12 @@ import {
 
 
 
+
+import './mockinfo/attention'
+
+Vue.use(Vant);
+
+
 Vue.use(Vant);
 Vue.use(ImagePreview);
 Vue.config.productionTip = false

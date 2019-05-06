@@ -12,12 +12,20 @@ export default {
 </script>
 
 <style>
-p {
-  margin: 0;
-  padding: 0;
+#app{
+  width:100vw;
+  height: 100vh;
+
 }
+p,h2,h3,figure,figcaption,img{
+  margin:0;
+  padding: 0;
+  font-family: Arial;
+}
+
 li {
   list-style: none;
+
 }
 img {
   border: none;

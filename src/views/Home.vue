@@ -16,12 +16,16 @@
 </template>
 
 <script>
+
+
+
 import Head from "@/components/Head";
 export default {
   name: "Home",
   components: {
     Head
   },
+
   data() {
     return {
       active: 0,
@@ -38,8 +42,12 @@ export default {
 </script>
 
 <style scoped>
+
+
+
 .container {
   /* margin-top: 46px; */
   margin-bottom: 50px;
 }
+
 </style>
