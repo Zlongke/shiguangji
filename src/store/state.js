@@ -1,5 +1,6 @@
 var state = {
-  username: ''
+  username: '',
+  img: ''
 }
 
 export default state;
