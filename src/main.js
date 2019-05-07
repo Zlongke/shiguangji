@@ -7,6 +7,10 @@ import Vant from 'vant';
 import 'vant/lib/index.css';
 import store from './store';
 
+import Share from 'vue-social-share'
+import 'vue-social-share/dist/client.css';
+Vue.use(Share)
+
 
 import './mockinfo/attention'
 

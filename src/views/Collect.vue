@@ -16,6 +16,9 @@
                     <img src="" />
                     <p class="name">{{name}}</p>
                     <p class="title">{{time}}</p>
+                     <span>
+                        <van-rate v-model="value"  icon="like"  void-icon="like-o" :count="1" />
+                    </span>
                 </div>
               
             </van-col>
@@ -30,7 +33,7 @@ export default {
             title:'我的收藏',
             name:'小坚果大能量',
             time:'2018.09.20',
-            value:false
+            value:true,
         }
     },
     mounted() {
@@ -60,6 +63,11 @@ export default {
          color: #646464;
          height: 30px;
 
+     }
+      #subnav p:nth-of-type(2){
+         position: absolute;
+         bottom: 10px;
+        left: 10px;
      }
      #subnav span{
          position: absolute;

@@ -1,7 +1,7 @@
 <template>
     <div>
         <header>
-            <van-nav-bar  @click-left="onClickLeft" title="" left-text="返回" left-arrow>
+            <van-nav-bar fixed  @click-left="onClickLeft" title="" left-text="返回" left-arrow>
                 <van-icon name="search" slot="right" />
             </van-nav-bar>
         </header>
@@ -17,9 +17,9 @@
         </van-row>
 
         <van-row type="flex" justify="center">
-            <van-col span="24">
+            <van-col span="24" tag="aside">
                 <aside>
-                    <p>秋冬宝宝加棉保暖套装</p>
+                    <p style="font-size:0.16rem">秋冬宝宝加棉保暖套装</p>
                     <van-button :class="{'yangshi':'cla'}" round size="mini">￥999</van-button>
                     <van-button  :class="{'yangshi':'cla'}" round size="mini">好评99%</van-button>
                     <span class="price">会员价：￥99</span>
@@ -32,20 +32,14 @@
             <div class="detail">
                 <figure>
                     <div>
-                        <p>设计者：WYYZMc
-</p>
-                    <p>颜    色：浅蓝、浅粉、浅绿
-
-</p>
+                        <p>设计者：WYYZMc</p>
+                    <p>颜    色：浅蓝、浅粉、浅绿</p>
                     </div>
                     
                     <figcaption>
                         <div>
-                            <p>材    质：100%纯棉
-
-</p>
-                        <p>适龄期：3~5岁宝宝
-</p>
+                            <p>材    质：100%纯棉</p>
+                        <p>适龄期：3~5岁宝宝</p>
                         </div>
                         
                     </figcaption>
@@ -60,8 +54,7 @@
                 <figure>
                     <p>vivi妈妈</p>
                     <figcaption>
-                        <p>宝贝很好，材质很好，手感也很柔软，适合宝宝穿
-</p>                  
+                        <p>宝贝很好，材质很好，手感也很柔软，适合宝宝穿</p>                  
                     </figcaption>
                 </figure>
            </div>

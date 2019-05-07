@@ -12,12 +12,7 @@ export default {
 </script>
 
 <style>
-#app{
-  width:100vw;
-  height: 100vh;
-
-}
-p,h2,h3,figure,figcaption,img{
+p,h2,h3,figure,figcaption,img,div{
   margin:0;
   padding: 0;
   font-family: Arial;

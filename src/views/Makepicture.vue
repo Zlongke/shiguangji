@@ -1,7 +1,7 @@
 <template>
     <div>
         <van-row type="flex" justify="space-around">
-            <van-col span="8">
+            <van-col span="10">
                 <div id="make">
                     <p>{{pic}}</p>
                         
@@ -11,7 +11,7 @@
                     </div>
                 </div>
             </van-col>
-            <van-col span="8">
+            <van-col span="10">
                 <div id="make">
                     <p>宝宝成长相册</p>
                         

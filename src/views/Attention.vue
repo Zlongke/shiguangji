@@ -2,10 +2,25 @@
     <div>
         <p>关注你感兴趣的人</p>
         <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-            <div class="nav" v-for="(item,i) in data" :key="i">
-                <figure  >
-                    <span><img :src="item.img" /></span>
-                    <figcaption>{{item.name}}</figcaption>
+            <div class="nav">
+                <figure>
+                    <span>
+                        <img src="" />
+                        <van-rate  icon="passed"  :size="10" void-icon="passed" v-model="value" :count="1" class="icon" />
+                    </span>
+                    <figcaption>生活达人</figcaption>
+                </figure>
+                <figure>
+                   <span><img src="" /></span>
+                    <figcaption>生活达人</figcaption>
+                </figure>
+                <figure>
+                    <span><img src="" /></span>
+                    <figcaption>生活达人</figcaption>
+                </figure>
+                <figure>
+                    <span><img src="" /></span>
+                    <figcaption>生活达人</figcaption>
                 </figure>
             </div>
         </van-pull-refresh>
@@ -21,7 +36,8 @@ export default {
    data(){
        return{
            data:[],
-           isLoading:false
+           isLoading:false,
+           value:0
        }
    },
    methods: {
@@ -32,61 +48,76 @@ export default {
             }, 500);
        }
    },
-    mounted() {
-          var  _this = this;
-        axios({
-            url:'http://www.jd.com/api/attention'
-        }).then((data) => {
-            console.log(data.data)
-            _this.data  = data.data.info
-        })
-    },
+    // mounted() {
+    //       var  _this = this;
+    //     axios({
+    //         url:'http://www.jd.com/api/attention'
+    //     }).then((data) => {
+    //         console.log(data.data)
+    //         _this.data  = data.data.info
+    //     })
+    // },
 
 }
 </script>
 
 <style scope="">
  p{
-    margin-top: 46px;
+    margin-top: 0.46rem;
     text-align: center;
-    height:40px;
-    line-height:40px;
+    height:0.4rem;
+    line-height:0.4rem;
+    font-size: 0.1rem;
 
   }
 .nav{
-    float: left;
-    width:80px;
-    height: 88px;
-    margin: 12px
+     display: flex;
+    flex-wrap: wrap;
+   justify-content: space-around;
+    margin: 0.12rem;
+     font-size: 0.12rem;
 }
-
+    figure{
+        width:1.1rem;
+        height: 1.25rem;
+        display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+    }
    figure span{
-       display: block;
-       height: 74px;
-       line-height: 20px;
-       text-align: center;
-       border-radius: 50%
+       position: relative;
+       height: 0.74rem;
+       height: 0.74rem;
+       border-radius: 50%;
+       background: #cccccc;
    }
-   img{
-       width:74px;
-       height: 74px;
-        border-radius: 50%
+   figure .icon{
+       position: absolute;
+       top: 0.05rem;
+       right: 0.02rem;
+   }
+   figure img{
+       width:0.74rem;
+       height: 0.74rem;
+        border-radius: 50%;
+         background: #cccccc;
    }
    figure figcaption{
-       width: 65px;
-       height: 24px;
-       text-align: center;
-       line-height: 17px;
-       margin-top: 10px;
-   }
+        width: 0.65rem;
+       height:0.24rem;
+       text-align: center; 
+       line-height: 0.17rem;
+       margin-top: 0.1rem;
+   } 
    .btn{
        position: fixed;
-       width:200px;
-       height: 30px;
-       line-height: 30px;
+       width:2rem;
+       height: 0.3rem;
+       line-height: 0.3rem;
        background-color:rgb(215, 213, 213);
        border:1px solid #cccccc;
-        bottom: 60px;
-        left: 100px;
+        bottom: 0.6rem;
+        left: 1rem;
    }
 </style>

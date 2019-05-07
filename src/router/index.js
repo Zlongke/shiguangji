@@ -29,15 +29,12 @@ import Collect from '@/views/Collect'
 import Cart from '@/views/Cart'
 import Order from '@/views/Order'
 import Coupon from '@/views/Coupon'
+import Waiting from '@/views/Waiting'
 
 import Yunxiangce from '@/views/Yunxiangce'
 import Chengzhangjilu from '@/views/Chengzhangjilu'
 import Chengjiu from '@/views/Chengjiu'
 import Qinyoutuan from '@/views/Qinyoutuan'
-
-
-
-
 
 
 Vue.use(Router)
@@ -172,7 +169,7 @@ export default new Router({
     name:'Buy',
     component:Buy
   },
-
+// 我的
   {
     path:'/minepublic',
     redirect:'/vipcenter',
@@ -213,7 +210,12 @@ export default new Router({
 
     ]
   },
-
+// 待收货
+  {
+    path: '/waiting',
+    name: 'Waiting',
+    component: Waiting
+  },
 
     {
       path: '/yunxiangce',

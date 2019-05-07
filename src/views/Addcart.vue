@@ -36,19 +36,23 @@
                </div>
              
             </div>
-             <div class="address">
-               <span >地址</span> 
-               <van-address-edit
-                :area-list="areaList"
-                show-postal
-                show-delete
-                show-set-default
-                show-search-result
-                :search-result="searchResult"
-                @save="onSave"
-                @delete="onDelete"
-                @change-detail="onChangeDetail"
-                />            
+             <div class="addressed">
+               <span>地址</span> 
+             <input @click="dizhi()" type="text" />
+             <van-popup class="address" v-model="show">
+                  <van-address-edit
+                    :area-list="areaList"
+                    show-postal
+                    show-delete
+                    show-set-default
+                    show-search-result
+                    :search-result="searchResult"
+                    @save="onSave"
+                    @delete="onDelete"
+                    @change-detail="onChangeDetail"
+                    />           
+             </van-popup>
+               
             </div>
             <van-button size="large">确认</van-button>
         </section>
@@ -56,23 +60,51 @@
 </template>
 
 <script>
+import areaList from '@/assets/area';
 export default {
     name:'Addcart',
     data() {
         return {
-             value: 1,
-              active: 1,
-              checked:true
+            value: 1,
+            active: 1,
+            checked:true,
+            show:false,
+            areaList,
+            searchResult: []
         }
     },
      methods: {
         onClickLeft(){
             this.$router.go(-1)
-        }
+        },
+         onSave() {
+      Toast('save');
     },
+    onDelete() {
+      Toast('delete');
+    },
+    onChangeDetail(val) {
+      if (val) {
+        this.searchResult = [{
+          name: '黄龙万科中心',
+          address: '杭州市西湖区'
+        }];
+      } else {
+        this.searchResult = [];
+      }
+    }
+  
+    },
+   dizhi(){
+        this.show = !this.show
+    }
 }
 </script>
 <style scope="">
+.address{
+    width:100%;
+}
+
     section{
         padding: 0px 10px;
     }
@@ -116,4 +148,3 @@ export default {
         justify-content: space-around;
     }
 </style>
-

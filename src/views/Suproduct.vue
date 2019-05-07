@@ -92,22 +92,23 @@ export default {
     flex-direction: column;
     /* width:348px; */
     margin:0 auto;
-    padding:0px 10px;
+    padding:0 0.1rem;
 }
 .banner{
-    margin-top: 46px;
-    width:348px;
-    height: 150px;
-    background: #A6A4A4 100%;
-    border: 1px solid #FFFFFF 0%;
-    border-radius: 12px;
+    font-size: 0.14rem;
+    margin-top: 0.46rem;
+    width:3.48rem;
+    height: 1.5rem;
+    background: #A6A4A4;
+    border-radius: 0.12rem;
 }
 .coupon{
-    width:348px;
-    margin: 5px 0;
-    height: 50px;
-    background: #D9D9D9 100%;
-    border-radius: 12px;
+    font-size: 0.12rem;
+    width:3.48rem;
+    margin: 0.05rem 0;
+    height: 0.5rem;
+    background: #D9D9D9;
+    border-radius: 0.12rem;
 }
 
 #contain #snav{
@@ -122,27 +123,27 @@ export default {
     justify-content: space-around;  
 }
 #contain #snav figure .icon{
-    height:44px;
-    width:44px;
-    font-size: 15px;
-    border-radius: 20px;
+    height:0.44rem;
+    width:0.44rem;
+    font-size: 0.15rem;
+    border-radius: 0.2rem;
     background: #D9D9D9;
 }
 #contain #snav figcaption{
-    margin: 10px 0px;
-    width: 65px;
-    height: 24px;
+    margin: 0.1rem 0px;
+    width: 0.65rem;
+    height: 0.24rem;
     background: #F8F8F8;
-    line-height: 24px;
+    line-height: 0.24rem;
     text-align: center;
-    font-size: 12px;
+    font-size: 0.12rem;
      color:#A6A4A4;
 }
 #contain .baby{
     display: flex;
-    margin-top:30px;
+    margin-top:0.3rem;
     justify-content: space-between;
-    font-size: 14px;
+    font-size: 0.14rem;
     color:#777676;
 }
 article{
@@ -151,22 +152,22 @@ article{
     justify-content: space-around;
 }
 article figure{
-    margin:10px 5px;
-    height: 115px;
-    width:88px;
+    margin:0.1rem 0.05rem;
+    height: 1.15rem;
+    width:0.88rem;
     display: flex;
     flex-direction: column;
 
 } 
 article figure span{
-    width:86px;
-    height: 86px;
+    width:0.86rem;
+    height: 0.86rem;
     border:1px solid #BBBBBB;
 }
 article figcaption{
-    font-size: 12px;
+    font-size: 0.12rem;
     color: #101010;
-    line-height: 17px;
+    line-height: 0.17rem;
     text-align: center;
 }
 </style>

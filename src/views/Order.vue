@@ -1,15 +1,53 @@
 <template>
     <div class="container">
-        <div><span></span><van-cell class="order" title="全部" icon="location-o" /></div>
-       
-        <van-cell class="order" title="待付款" icon="location-o" />
-        <van-cell class="order" title="待收货" icon="location-o" />
-        <van-cell class="order" title="待发货" icon="location-o" />
-        <van-cell class="order" title="已完成" icon="location-o" />
-        <van-cell class="order" title="评价" icon="location-o" />
-        <van-cell class="order" title="退货/售后" icon="location-o" />
-
-     
+    <van-row type="flex"  align="center">
+    <van-col span="12" >
+        <div class="spa">
+            <span></span>
+            <p>全部</p>
+        </div>   
+    </van-col>
+    </van-row>
+     <van-row type="flex"  align="center">
+    <van-col span="12" >
+        <div class="spa">
+            <span></span>
+            <p>待付款</p>
+        </div>   
+    </van-col>
+    </van-row>
+    <van-row type="flex"  align="center">
+        <van-col span="12" >
+            <div class="spa" @click="wait">
+                <span></span>
+                <p>待收货</p>
+            </div>   
+        </van-col>
+    </van-row>
+     <van-row type="flex"  align="center">
+    <van-col span="12" >
+        <div class="spa">
+            <span></span>
+            <p>待发货</p>
+        </div>   
+    </van-col>
+    </van-row>
+     <van-row type="flex"  align="center">
+    <van-col span="12" >
+        <div class="spa">
+            <span></span>
+            <p>已完成</p>
+        </div>   
+    </van-col>
+    </van-row>
+     <van-row type="flex"  align="center">
+    <van-col span="12" >
+        <div class="spa">
+            <span></span>
+            <p>退货/售后</p>
+        </div>   
+    </van-col>
+    </van-row>       
     </div>
 </template>
 <script>
@@ -21,7 +59,9 @@ export default {
         }
     },
     methods: {
-         
+        wait(){
+            this.$router.push('/waiting')
+        } 
     },
     mounted() {
         this.$emit('toTitle',this.title)
@@ -31,17 +71,19 @@ export default {
 </script>
 <style scoped>
     .container{
+        padding:0px 20px;
         margin-top: 55px;
     }
-    .container span{
+    .spa{
+        height:66px;
         display: flex;
+        align-items: center;
+    }
+     span{
         width:35px;
         height: 35px;
-        background: #ECECEC;
-    }
-    .order{
-        height: 66px;
-        line-height: 46px;
-        font-size: 14px;
+        background:#ECECEC;
+        border-radius: 8px;
+        margin-right: 10px;
     }
 </style>
