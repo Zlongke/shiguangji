@@ -10,6 +10,8 @@ import Live from '@/views/Live'
 import Message from '@/views/Message'
 import Mine from '@/views/Mine'
 import Time from '@/views/Time'
+
+
 import Yunxiangce from '@/views/Yunxiangce'
 import Chengzhangjilu from '@/views/Chengzhangjilu'
 import Chengjiu from '@/views/Chengjiu'
@@ -28,9 +30,30 @@ import fenlei from '@/views/fenlei'
 import feilei2 from '@/views/feilei2'
 
 
+//时光记模块
 
 
+import Attention from '@/views/Attention'
+import Afterattention from '@/views/Afterattention'
+import Livecommon from '@/views/Livecommon'
+import Community from '@/views/Community'
+import Suproduct from '@/views/Suproduct'
+import Babynecessary from '@/views/Babynecessary'
+import Detail from '@/views/Detail'
+import Clean from '@/views/Clean'
+import Addcart from '@/views/Addcart'
+import Buy from '@/views/Buy'
+import Appraise from '@/views/Appraise'
+import Minepublic from '@/views/Minepublic'
+import Vipcenter from '@/views/Vipcenter'
+import Makepicture from '@/views/Makepicture'
+import Collect from '@/views/Collect'
+import Cart from '@/views/Cart'
+import Order from '@/views/Order'
+import Coupon from '@/views/Coupon'
+import Waiting from '@/views/Waiting'
 
+import Daoruxiangce from '@/views/Daoruxiangce'
 
 Vue.use(Router)
 
@@ -53,6 +76,7 @@ export default new Router({
 
       ]
     },
+    // 登录注册结束
     {
       path: '/home',
       name: 'Home',
@@ -63,11 +87,66 @@ export default new Router({
           name: 'Jinnang',
           component: Jinnang
         },
+        // 生活
         {
+
           path: '/live',
+          redirect: '/attention',
           name: 'Live',
-          component: Live
+          component: Live,
+          children: [{
+              path: '/attention',
+              name: 'Attention',
+              component: Attention
+            },
+            {
+              path: '/afterattention',
+              name: 'Afterattention',
+              component: Afterattention
+            },
+            // 评价
+            {
+              path: '/appraise',
+              name: 'Appraise',
+              component: Appraise
+            },
+          ]
+
+
+
+
         },
+
+
+        // 生活结束
+        {
+          path: '/shipu',
+          name: 'Shipu',
+          component: shipu
+        },
+
+        {
+          path: '/eat',
+          name: 'Eat',
+          component: eat
+        },
+
+        {
+          path: '/wdshoucang',
+          name: 'Wdshouchang',
+          component:wdshoucang
+        },
+        {
+          path: '/eatone',
+          name: 'Eatone',
+          component: eatone
+        },
+        {
+          path: '/jiuniang',
+          name: 'Jiuniang',
+          component:jiuniang
+        },
+
         {
           path: '/shipu',
           name: 'Shipu',
@@ -114,6 +193,178 @@ export default new Router({
         },
       ]
     },
+
+
+    // 生活社区
+    {
+      path: '/livecommon',
+      redirect: '/community',
+      name: 'Livecommon',
+      component: Livecommon,
+      children: [{
+          path: '/community',
+          name: 'Community',
+          component: Community
+        },
+        {
+          path: '/suproduct',
+          name: 'Suproduct',
+          component: Suproduct
+        },
+        {
+          path: '/babynecessary',
+          name: 'Babynecessary',
+          component: Babynecessary
+        },
+        {
+          path: '/clean',
+          name: 'Clean',
+          component: Clean
+        }
+
+      ],
+
+
+    },
+    //  生活详情
+    {
+      path: '/detail',
+      name: 'Detail',
+      component: Detail,
+    },
+    {
+      path: '/addcart',
+      name: 'Addcart',
+      component: Addcart
+    },
+    {
+      path: '/buy',
+      name: 'Buy',
+      component: Buy
+    },
+
+    {
+      path: '/minepublic',
+      redirect: '/vipcenter',
+      name: 'Minepublic',
+      component: Minepublic,
+      children: [{
+          path: '/vipcenter',
+          name: 'Vipcenter',
+          component: Vipcenter
+        },
+        {
+          path: '/makepicture',
+          name: 'Makepicture',
+          component: Makepicture
+        },
+        {
+          path: '/collect',
+          name: 'Collect',
+          component: Collect
+        },
+        {
+          path: '/cart',
+          name: 'Cart',
+          component: Cart
+        },
+        {
+          path: '/order',
+          name: 'Order',
+          component: Order
+        },
+        {
+          path: '/coupon',
+          name: 'Coupon',
+          component: Coupon
+        },
+
+
+      ]
+    },
+
+  //  生活详情
+  {
+    path:'/detail',
+    name:'Detail',
+    component:Detail,
+  },
+  {
+    path:'/addcart',
+    name:'Addcart',
+    component:Addcart
+  },
+  {
+    path:'/buy',
+    name:'Buy',
+    component:Buy
+  },
+// 我的
+  {
+    path:'/minepublic',
+    redirect:'/vipcenter',
+    name:'Minepublic',
+    component:Minepublic,
+    children:[
+      {
+        path:'/vipcenter',
+        name:'Vipcenter',
+        component:Vipcenter
+      },
+      {
+        path:'/makepicture',
+        name:'Makepicture',
+        component:Makepicture
+      },
+      {
+        path:'/collect',
+        name:'Collect',
+        component:Collect
+      },
+      {
+        path:'/cart',
+        name:'Cart',
+        component:Cart
+      },
+      {
+        path:'/order',
+        name:'Order',
+        component:Order
+      },
+      {
+        path:'/coupon',
+        name:'Coupon',
+        component:Coupon
+      },
+
+
+    ]
+  },
+// 待收货
+  {
+    path: '/waiting',
+    name: 'Waiting',
+    component: Waiting
+  },
+
+
+
+
+    {
+      path: '/messageone',
+      name: 'Messageone',
+      component: messageone
+    },
+    {
+      path: '/baike',
+      name: 'Baike',
+      component:baike
+    },
+    {
+      path: '/wenda',
+      name: 'Wenda',
+      component:wenda
+    },
     {
       path: '/messageone',
       name: 'Messageone',
@@ -154,6 +405,20 @@ export default new Router({
       name: ' Qinyoutuan',
       component: Qinyoutuan
     },
+
+
+
+
+    {
+      path: '/daoruxiangce',
+      name: ' Daoruxiangce',
+      component: Daoruxiangce
+    },
+
+
+
+
+
     {
       path: '/yyshipu2',
       name: ' Yyshipu2',
@@ -172,5 +437,9 @@ export default new Router({
         },
       ]
     },
+
+
+
+
   ]
 })

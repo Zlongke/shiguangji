@@ -1,8 +1,8 @@
 <template>
   <div>
     <Head :name="title"/>
-    <div class="container">
-      <van-tabs v-model="active" color="#cecece" line-height="2">
+    <div class="container-list">
+      <van-tabs v-model="active" color="#cecece">
         <van-tab title="记录列表">
           <div class="list">
             <p>
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.container-list {
   margin-top: 46px;
 }
 .list {

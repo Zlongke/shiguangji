@@ -6,10 +6,24 @@ import router from './router'
 import Vant from 'vant';
 import 'vant/lib/index.css';
 import store from './store';
+import {
+  ImagePreview
+} from 'vant';
 
+
+
+import Share from 'vue-social-share'
+import 'vue-social-share/dist/client.css';
+Vue.use(Share)
+
+
+import './mockinfo/attention'
 
 Vue.use(Vant);
 
+
+Vue.use(Vant);
+Vue.use(ImagePreview);
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
