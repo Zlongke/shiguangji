@@ -1,7 +1,7 @@
 <template>
   <div>
     <Head :name="title"/>
-    <div class="container">
+    <div class="container-list">
       <van-tabs v-model="active" color="#cecece">
         <van-tab title="记录列表">
           <div class="list">
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.container-list {
   margin-top: 46px;
 }
 .list {
