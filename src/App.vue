@@ -12,10 +12,10 @@ export default {
 </script>
 
 <style>
-<<<<<<< HEAD
+
 p,h2,h3,figure,figcaption,img,div{
-  margin:0;
-=======
+  margin:0;}
+
 /* #app{
   width:100vw;
   height: 100vh;
@@ -28,7 +28,7 @@ figure,
 figcaption,
 img {
   margin: 0;
->>>>>>> 8982c414fab0cc15456b2404802848bdafde5aae
+
   padding: 0;
   font-family: Arial;
 }
