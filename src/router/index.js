@@ -134,7 +134,7 @@ export default new Router({
         {
           path: '/wdshoucang',
           name: 'Wdshouchang',
-          component:wdshoucang
+          component: wdshoucang
         },
         {
           path: '/eatone',
@@ -144,7 +144,7 @@ export default new Router({
         {
           path: '/jiuniang',
           name: 'Jiuniang',
-          component:jiuniang
+          component: jiuniang
         },
 
         {
@@ -162,7 +162,7 @@ export default new Router({
         {
           path: '/wdshoucang',
           name: 'Wdshouchang',
-          component:wdshoucang
+          component: wdshoucang
         },
         {
           path: '/eatone',
@@ -172,7 +172,7 @@ export default new Router({
         {
           path: '/jiuniang',
           name: 'Jiuniang',
-          component:jiuniang
+          component: jiuniang
         },
 
         {
@@ -283,69 +283,135 @@ export default new Router({
       ]
     },
 
-  //  生活详情
-  {
-    path:'/detail',
-    name:'Detail',
-    component:Detail,
-  },
-  {
-    path:'/addcart',
-    name:'Addcart',
-    component:Addcart
-  },
-  {
-    path:'/buy',
-    name:'Buy',
-    component:Buy
-  },
-// 我的
-  {
-    path:'/minepublic',
-    redirect:'/vipcenter',
-    name:'Minepublic',
-    component:Minepublic,
-    children:[
-      {
-        path:'/vipcenter',
-        name:'Vipcenter',
-        component:Vipcenter
-      },
-      {
-        path:'/makepicture',
-        name:'Makepicture',
-        component:Makepicture
-      },
-      {
-        path:'/collect',
-        name:'Collect',
-        component:Collect
-      },
-      {
-        path:'/cart',
-        name:'Cart',
-        component:Cart
-      },
-      {
-        path:'/order',
-        name:'Order',
-        component:Order
-      },
-      {
-        path:'/coupon',
-        name:'Coupon',
-        component:Coupon
-      },
+
+    //  生活详情
+    {
+      path: '/detail',
+      name: 'Detail',
+      component: Detail,
+    },
+    {
+      path: '/addcart',
+      name: 'Addcart',
+      component: Addcart
+    },
+    {
+      path: '/buy',
+      name: 'Buy',
+      component: Buy
+    },
+    // 我的
+    {
+      path: '/minepublic',
+      redirect: '/vipcenter',
+      name: 'Minepublic',
+      component: Minepublic,
+      children: [{
+          path: '/vipcenter',
+          name: 'Vipcenter',
+          component: Vipcenter
+        },
+        {
+          path: '/makepicture',
+          name: 'Makepicture',
+          component: Makepicture
+        },
+        {
+          path: '/collect',
+          name: 'Collect',
+          component: Collect
+        },
+        {
+          path: '/cart',
+          name: 'Cart',
+          component: Cart
+        },
+        {
+          path: '/order',
+          name: 'Order',
+          component: Order
+        },
+        {
+          path: '/coupon',
+          name: 'Coupon',
+          component: Coupon
+        },
 
 
-    ]
-  },
-// 待收货
-  {
-    path: '/waiting',
-    name: 'Waiting',
-    component: Waiting
-  },
+      ]
+    },
+    // 待收货
+    {
+      path: '/waiting',
+      name: 'Waiting',
+      component: Waiting
+    },
+
+
+
+    //  生活详情
+    {
+      path: '/detail',
+      name: 'Detail',
+      component: Detail,
+    },
+    {
+      path: '/addcart',
+      name: 'Addcart',
+      component: Addcart
+    },
+    {
+      path: '/buy',
+      name: 'Buy',
+      component: Buy
+    },
+    // 我的
+    {
+      path: '/minepublic',
+      redirect: '/vipcenter',
+      name: 'Minepublic',
+      component: Minepublic,
+      children: [{
+          path: '/vipcenter',
+          name: 'Vipcenter',
+          component: Vipcenter
+        },
+        {
+          path: '/makepicture',
+          name: 'Makepicture',
+          component: Makepicture
+        },
+        {
+          path: '/collect',
+          name: 'Collect',
+          component: Collect
+        },
+        {
+          path: '/cart',
+          name: 'Cart',
+          component: Cart
+        },
+        {
+          path: '/order',
+          name: 'Order',
+          component: Order
+        },
+        {
+          path: '/coupon',
+          name: 'Coupon',
+          component: Coupon
+        },
+
+
+      ]
+    },
+    // 待收货
+    {
+      path: '/waiting',
+      name: 'Waiting',
+      component: Waiting
+    },
+
 
 
 
@@ -358,12 +424,12 @@ export default new Router({
     {
       path: '/baike',
       name: 'Baike',
-      component:baike
+      component: baike
     },
     {
       path: '/wenda',
       name: 'Wenda',
-      component:wenda
+      component: wenda
     },
     {
       path: '/messageone',
@@ -373,12 +439,12 @@ export default new Router({
     {
       path: '/baike',
       name: 'Baike',
-      component:baike
+      component: baike
     },
     {
       path: '/wenda',
       name: 'Wenda',
-      component:wenda
+      component: wenda
     },
     {
       path: '/yunxiangce',
@@ -398,7 +464,7 @@ export default new Router({
     {
       path: '/yyshipu',
       name: 'Yyshipu',
-      component:yyshipu
+      component: yyshipu
     },
     {
       path: '/qinyoutuan',
@@ -424,16 +490,15 @@ export default new Router({
       name: ' Yyshipu2',
       redirect: '/fenlei',
       component: yyshipu2,
-        children: [
-          {
+      children: [{
           path: '/fenlei',
           name: ' Fenlei',
-          component:fenlei,
+          component: fenlei,
         },
         {
           path: '/feilei2',
           name: ' Feilei2',
-          component:feilei2,
+          component: feilei2,
         },
       ]
     },

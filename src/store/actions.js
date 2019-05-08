@@ -4,17 +4,22 @@ import axios from 'axios';
 var actions = {
   login({
     commit
-  }, username, password) {
+  }, {
+    username,
+    password
+  }) {
+    console.log(username, password)
     axios({
-      url: 'http://jx.xuzhixiang.top/ap/api/login.php',
+      method: "get",
+      url: '/ssm-1.0/user/login.do',
       params: {
-        username: username,
+        name: username,
         password: password
       }
     }).then(function (data) {
       console.log(data.data);
       commit('login', username);
-      router.push('/home');
+      //router.push('/home');
     })
   }
 }
