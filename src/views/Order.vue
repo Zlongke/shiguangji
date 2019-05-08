@@ -71,6 +71,7 @@ export default {
 </script>
 <style scoped>
     .container{
+        font-size: 0.14rem;
         padding:0px 20px;
         margin-top: 55px;
     }

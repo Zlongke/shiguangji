@@ -16,7 +16,7 @@
                <span>数量</span> 
                <van-stepper input-width="60px" v-model="value" />            
             </div>
-             <div class="size">
+             <div class="size" @click="nextStep">
                <span>尺寸</span> 
                <van-steps :active="active">
                 <van-step>30cm</van-step>
@@ -38,7 +38,9 @@
             </div>
              <div class="addressed">
                <span>地址</span> 
-             <input @click="dizhi()" type="text" />
+               <van-cell-group>
+                    <van-field @click="dizhi" v-model="value" placeholder="请输入用户名" />
+                </van-cell-group>
              <van-popup class="address" v-model="show">
                   <van-address-edit
                     :area-list="areaList"
@@ -54,7 +56,7 @@
              </van-popup>
                
             </div>
-            <van-button size="large">确认</van-button>
+            <van-button type="primary" size="large">确认</van-button>
         </section>
     </div>
 </template>
@@ -74,6 +76,12 @@ export default {
         }
     },
      methods: {
+          nextStep() {
+            this.active = ++this.active % 5;
+            },
+          dizhi(){
+                this.show = !this.show
+            },
         onClickLeft(){
             this.$router.go(-1)
         },
@@ -95,9 +103,7 @@ export default {
     }
   
     },
-   dizhi(){
-        this.show = !this.show
-    }
+  
 }
 </script>
 <style scope="">

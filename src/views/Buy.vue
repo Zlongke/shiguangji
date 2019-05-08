@@ -16,7 +16,7 @@
                <span>数量</span> 
                <van-stepper input-width="60px" v-model="value" />            
             </div>
-             <div class="size">
+             <div class="size" @click="nextStep">
                <span>尺寸</span> 
                <van-steps :active="active">
                 <van-step>30cm</van-step>
@@ -36,43 +36,81 @@
                </div>
              
             </div>
-             <div class="address">
-               <span >配送至</span> 
-               <van-address-edit
-                :area-list="areaList"
-                show-postal
-                show-delete
-                show-set-default
-                show-search-result
-                :search-result="searchResult"
-                @save="onSave"
-                @delete="onDelete"
-                @change-detail="onChangeDetail"
-                />            
+             <div class="addressed">
+               <span>地址</span> 
+               <van-cell-group>
+                    <van-field @click="dizhi" v-model="value" placeholder="请输入用户名" />
+                </van-cell-group>
+             <van-popup class="address" v-model="show">
+                  <van-address-edit
+                    :area-list="areaList"
+                    show-postal
+                    show-delete
+                    show-set-default
+                    show-search-result
+                    :search-result="searchResult"
+                    @save="onSave"
+                    @delete="onDelete"
+                    @change-detail="onChangeDetail"
+                    />           
+             </van-popup>
+               
             </div>
-            <van-button size="large">确认</van-button>
+            <van-button type="primary" size="large">确认</van-button>
         </section>
     </div>
 </template>
 
 <script>
+import areaList from '@/assets/area';
 export default {
     name:'Buy',
     data() {
         return {
-             value: 1,
-              active: 1,
-              checked:true
+            value: 1,
+            active: 1,
+            checked:true,
+            show:false,
+            areaList,
+            searchResult: []
         }
     },
      methods: {
+          nextStep() {
+            this.active = ++this.active % 5;
+            },
+          dizhi(){
+                this.show = !this.show
+            },
         onClickLeft(){
             this.$router.go(-1)
-        }
+        },
+         onSave() {
+      Toast('save');
     },
+    onDelete() {
+      Toast('delete');
+    },
+    onChangeDetail(val) {
+      if (val) {
+        this.searchResult = [{
+          name: '黄龙万科中心',
+          address: '杭州市西湖区'
+        }];
+      } else {
+        this.searchResult = [];
+      }
+    }
+  
+    },
+  
 }
 </script>
 <style scope="">
+.address{
+    width:100%;
+}
+
     section{
         padding: 0px 10px;
     }

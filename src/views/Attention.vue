@@ -35,7 +35,7 @@ export default {
     name:'Attention',
    data(){
        return{
-           data:[],
+           list:[],
            isLoading:false,
            value:0
        }
@@ -48,15 +48,15 @@ export default {
             }, 500);
        }
    },
-    // mounted() {
-    //       var  _this = this;
-    //     axios({
-    //         url:'http://www.jd.com/api/attention'
-    //     }).then((data) => {
-    //         console.log(data.data)
-    //         _this.data  = data.data.info
-    //     })
-    // },
+    mounted() {
+          var  _this = this;
+        axios({
+            url:'http://39.104.69.163:8081/ssm-1.0/atten/findall.do',
+        }).then((data) => {
+            console.log(data.data)
+           this.list = data.data.data
+        })
+    },
 
 }
 </script>

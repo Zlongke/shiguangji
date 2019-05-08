@@ -89,10 +89,12 @@ export default {
     mounted() {
         var _this = this;
         axios({
-            url:'http://www.jd.com/api/attention',
+            method:'get',
+            url:' http://jx.xuzhixiang.top/ap/api/bannerlist.php',
+            params:{uid:6436}
         }).then((data)=>{
             console.log(data.data)
-            _this.data = data.data.info
+            // _this.data = data.data.info
         })
     },  
 }

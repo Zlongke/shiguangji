@@ -35,6 +35,7 @@ import Coupon from '@/views/Coupon'
 import Waiting from '@/views/Waiting'
 
 
+
 import Yunxiangce from '@/views/Yunxiangce'
 import Chengzhangjilu from '@/views/Chengzhangjilu'
 import Chengjiu from '@/views/Chengjiu'
@@ -211,7 +212,7 @@ export default new Router({
 
       ]
     },
-<<<<<<< HEAD
+
   //  生活详情
   {
     path:'/detail',
@@ -275,9 +276,8 @@ export default new Router({
     name: 'Waiting',
     component: Waiting
   },
-=======
 
->>>>>>> 8982c414fab0cc15456b2404802848bdafde5aae
+
 
     {
       path: '/yunxiangce',
@@ -305,8 +305,6 @@ export default new Router({
       name: ' Daoruxiangce',
       component: Daoruxiangce
     },
-
-
 
   ]
 })
