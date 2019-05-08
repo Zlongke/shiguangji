@@ -12,7 +12,7 @@
 
     <!-- <Head :name="title"/> -->
     <div class="container">
-      <router-view @totitle="tap"></router-view>
+      <router-view ></router-view>
     </div>
 
     <van-tabbar v-model="active" class="liebiao" >
