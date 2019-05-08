@@ -12,7 +12,9 @@ export default {
 </script>
 
 <style>
-head p,
+body {
+  font-size: 0.14rem;
+}
 h2,
 h3,
 figure,

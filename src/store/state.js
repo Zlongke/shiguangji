@@ -1,5 +1,6 @@
 var state = {
   username: '',
+  password: '',
   img: ''
 }
 

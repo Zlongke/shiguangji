@@ -30,12 +30,12 @@ export default {
     LoginTop
   },
   mounted() {
-    axios({
+    /* axios({
       url: "http://jx.xuzhixiang.top/ap/api/productlist.php",
       params: { uid: 2000 }
     }).then(data => {
       console.log(data.data.data);
-    });
+    }); */
   }
 };
 </script>

@@ -6,7 +6,7 @@
       <van-field v-model="password" type="password" label="密码" left-icon="bag-o" size="large"/>
     </van-cell-group>
 
-    <van-button class="bottom" type="primary" size="large" @click="login(username,password)">登录</van-button>
+    <van-button class="bottom" type="primary" size="large" @click="login({username,password})">登录</van-button>
   </div>
 </template>
 

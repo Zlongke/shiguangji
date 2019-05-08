@@ -1,6 +1,10 @@
 var mutations = {
-  login(state, username) {
+  login(state, {
+    username,
+    password
+  }) {
     state.username = username;
+    state.password = password;
   },
   upload(state, str) {
     state.img = str;
