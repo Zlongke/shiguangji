@@ -3,10 +3,9 @@
     <Head :name="title"/>
     <div class="container">
       <div class="xiangce">
-        <van-uploader class="camera" :after-read="onRead">
-          <van-icon name="photograph"/>
+        <van-uploader class="camera" :after-read="onRead" accept="image/*" multiple>
+          <img class="image" :src="img">
         </van-uploader>
-        <img class="image" :src="img">
       </div>
       <van-cell-group class="message">
         <van-field
@@ -17,15 +16,15 @@
           autosize
         />
       </van-cell-group>
-      <van-button class="daoru" round type="danger">开始导入</van-button>
-      <p @click="a">预览图片</p>
+      <van-button @click="addPhoto" class="daoru" round type="danger">开始导入</van-button>
     </div>
   </div>
 </template>
 
 <script>
 import { ImagePreview } from "vant";
-
+import axios from "axios";
+import qs from "qs";
 import Head from "@/components/Head";
 import { mapState } from "vuex";
 export default {
@@ -35,22 +34,34 @@ export default {
   data() {
     return {
       title: "时光记",
-      message: ""
+      message: "",
+      img: ""
     };
   },
-  computed: {
+  /* computed: {
     ...mapState(["img"])
-  },
+  }, */
   methods: {
     onRead(file) {
-      //this.img = file.content;
-      this.$store.commit("upload", file.content);
+      this.img = file.content;
+      //this.$store.commit("upload", file.content);
     },
-    a() {
-      ImagePreview([
-        "https://img.yzcdn.cn/1.jpg",
-        "https://img.yzcdn.cn/2.jpg"
-      ]);
+    addPhoto() {
+      var _this = this;
+      console.log(_this.img);
+      axios({
+        url: "/ssm-1.0/photolist/addphotolist.do",
+        params: { photo: _this.img, time: _this.message, u_id: 1 }
+      }).then(data => {
+        console.log(data.data.data);
+      });
+      /* axios({
+        method: "post",
+        url: "/ssm-1.0/photolist/addphotolist.do",
+        data: qs.stringify({ photo: _this.img, time: _this.message, u_id: 1 })
+      }).then(data => {
+        console.log(data.data);
+      }); */
     }
   }
 };
@@ -77,9 +88,9 @@ export default {
   border-radius: 5vw;
 }
 .camera {
-  position: absolute;
-  left: 35vw;
-  top: 35vw;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 .message {
   margin-top: 15vw;

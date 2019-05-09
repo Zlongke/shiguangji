@@ -1,7 +1,7 @@
 var state = {
   username: '',
-  password: '',
-  img: ''
+  img: '',
+  u_id: ''
 }
 
 export default state;
