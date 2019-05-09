@@ -1,14 +1,14 @@
 var mutations = {
-  login(state, {
-    username,
-    password
-  }) {
+  login(state, username) {
     state.username = username;
-    state.password = password;
   },
   upload(state, str) {
     state.img = str;
+  },
+  adduid(state, u_id) {
+    state.u_id = u_id
   }
+
 }
 
 export default mutations;

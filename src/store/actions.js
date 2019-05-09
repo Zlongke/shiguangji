@@ -8,7 +8,7 @@ var actions = {
     username,
     password
   }) {
-    console.log(username, password)
+    //console.log(username, password)
     axios({
       method: "get",
       url: '/ssm-1.0/user/login.do',
@@ -17,9 +17,14 @@ var actions = {
         password: password
       }
     }).then(function (data) {
-      console.log(data.data);
+      //console.log(data.data);
+      var uid = data.data.data.u_id
       commit('login', username);
-      //router.push('/home');
+      commit('adduid', uid)
+      if (data.data.code == 1000) {
+        router.push('/home');
+      }
+
     })
   }
 }

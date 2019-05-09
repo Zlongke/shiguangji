@@ -1,22 +1,22 @@
 <template>
     <div>
         <header>
-            <van-nav-bar  @click-left="onClickLeft" title="" left-text="" left-arrow>
+            <van-nav-bar fixed  @click-left="onClickLeft" title="" left-text="" left-arrow>
             </van-nav-bar>
         </header>
         <section>
             <article>
-                <img src="">
+                <img :src="detail.pimg">
                 <div>
-                    <p>宝宝秋冬加棉保暖套装</p>
-                    <p>￥999</p>
+                    <p>{{detail.pname}}</p>
+                    <p>￥{{detail.pprice}}</p>
                 </div> 
             </article>
             <div class="num">
                <span>数量</span> 
                <van-stepper input-width="60px" v-model="value" />            
             </div>
-             <div class="size">
+             <div class="size" @click="nextStep">
                <span>尺寸</span> 
                <van-steps :active="active">
                 <van-step>30cm</van-step>
@@ -36,43 +36,94 @@
                </div>
              
             </div>
-             <div class="address">
-               <span >配送至</span> 
-               <van-address-edit
-                :area-list="areaList"
-                show-postal
-                show-delete
-                show-set-default
-                show-search-result
-                :search-result="searchResult"
-                @save="onSave"
-                @delete="onDelete"
-                @change-detail="onChangeDetail"
-                />            
+             <div class="addressed">
+               <span>地址</span> 
+               <van-cell-group>
+                    <van-field @click="dizhi" v-model="value" />
+                </van-cell-group>
+             <van-popup class="address" v-model="show">
+                  <van-address-edit
+                    :area-list="areaList"
+                    show-postal
+                    show-delete
+                    show-set-default
+                    show-search-result
+                    :search-result="searchResult"
+                    @save="onSave"
+                    @delete="onDelete"
+                    @change-detail="onChangeDetail"
+                    />           
+             </van-popup>
+               
             </div>
-            <van-button size="large">确认</van-button>
+            <van-button type="primary" size="large">确认</van-button>
         </section>
     </div>
 </template>
 
 <script>
+import areaList from '@/assets/area';
+import axios from 'axios'
 export default {
     name:'Buy',
     data() {
         return {
-             value: 1,
-              active: 1,
-              checked:true
+            value: '河南省郑州市',
+            active: 1,
+            checked:true,
+            show:false,
+            areaList,
+            searchResult: [],
+            detail:''
         }
     },
      methods: {
-        onClickLeft(){
-            this.$router.go(-1)
+          nextStep() {
+            this.active = ++this.active % 5;
+            },
+          dizhi(){
+                this.show = !this.show
+            },
+            onClickLeft(){
+                this.$router.go(-1)
+            },
+            onSave() {
+        Toast('save');
+        },
+        onDelete() {
+        Toast('delete');
+        },
+        onChangeDetail(val) {
+        if (val) {
+            this.searchResult = [{
+            name: '黄龙万科中心',
+            address: '杭州市西湖区'
+            }];
+        } else {
+                this.searchResult = [];
+            }
         }
+  
     },
+    mounted() {
+        var _this=this;
+        var _this = this;
+        axios({
+            url:'http://jx.xuzhixiang.top/ap/api/detail.php',
+            params:{id:_this.$route.query.id}
+        }).then((data)=>{
+            console.log(data.data.data)
+            _this.detail = data.data.data
+        })
+    },
+  
 }
 </script>
 <style scope="">
+.address{
+    width:100%;
+}
+
     section{
         padding: 0px 10px;
     }
@@ -81,8 +132,7 @@ export default {
         flex-direction: column;
     }
     article img{
-        width:100%;
-        height: 380px;
+        height: 320px;
         background: yellowgreen;
     }
     article div{

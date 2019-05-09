@@ -11,7 +11,6 @@ import Message from '@/views/Message'
 import Mine from '@/views/Mine'
 import Time from '@/views/Time'
 
-
 import Yunxiangce from '@/views/Yunxiangce'
 import Chengzhangjilu from '@/views/Chengzhangjilu'
 import Chengjiu from '@/views/Chengjiu'
@@ -52,9 +51,11 @@ import Cart from '@/views/Cart'
 import Order from '@/views/Order'
 import Coupon from '@/views/Coupon'
 import Waiting from '@/views/Waiting'
+import Unpay from '@/views/Unpay'
+
 
 import Daoruxiangce from '@/views/Daoruxiangce'
-
+import Quanbu from '@/views/Quanbu'
 Vue.use(Router)
 
 export default new Router({
@@ -284,6 +285,73 @@ export default new Router({
     },
 
 
+  //  生活详情
+  {
+    path:'/detail',
+    name:'Detail',
+    component:Detail,
+  },
+  {
+    path:'/addcart',
+    name:'Addcart',
+    component:Addcart
+  },
+  {
+    path:'/buy',
+    name:'Buy',
+    component:Buy
+  },
+// 我的
+  {
+    path:'/minepublic',
+    redirect:'/vipcenter',
+    name:'Minepublic',
+    component:Minepublic,
+    children:[
+      {
+        path:'/vipcenter',
+        name:'Vipcenter',
+        component:Vipcenter
+      },
+      {
+        path:'/makepicture',
+        name:'Makepicture',
+        component:Makepicture
+      },
+      {
+        path:'/collect',
+        name:'Collect',
+        component:Collect
+      },
+      {
+        path:'/cart',
+        name:'Cart',
+        component:Cart
+      },
+      {
+        path:'/order',
+        name:'Order',
+        component:Order
+      },
+      {
+        path:'/coupon',
+        name:'Coupon',
+        component:Coupon
+      },
+
+
+    ]
+  },
+// 待收货
+  {
+    path: '/waiting',
+    name: 'Waiting',
+    component: Waiting
+  },
+
+
+
+
     //  生活详情
     {
       path: '/detail',
@@ -410,6 +478,12 @@ export default new Router({
       path: '/waiting',
       name: 'Waiting',
       component: Waiting
+    },
+// 代发货
+    {
+      path: '/unpay',
+      name: 'Unpay',
+      component: Unpay
     },
 
 
@@ -462,6 +536,11 @@ export default new Router({
       component: Chengjiu
     },
     {
+      path: '/quanbu',
+      name: ' Quanbu',
+      component: Quanbu
+    },
+    {
       path: '/yyshipu',
       name: 'Yyshipu',
       component: yyshipu
@@ -481,10 +560,6 @@ export default new Router({
       component: Daoruxiangce
     },
 
-
-
-
-
     {
       path: '/yyshipu2',
       name: ' Yyshipu2',
@@ -502,9 +577,5 @@ export default new Router({
         },
       ]
     },
-
-
-
-
   ]
 })

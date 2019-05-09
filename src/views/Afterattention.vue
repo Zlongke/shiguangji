@@ -1,14 +1,14 @@
 <template>
-    <div>
+    <div class="container">
         <div class="nav clearfix" v-for="(item,i) in list" :key="i">
             <figure  >
                 <span><img :src="item.img" /></span>
                 <figcaption>
-                    <div><span>vivi妈妈</span><span>3秒前 宝宝2岁</span></div>
+                    <div><span>{{item.name}}</span><span>3秒前 宝宝2岁</span></div>
                 </figcaption>
             </figure>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel adipisci at ut laudantium ducimus accusamus cupiditate voluptatibus, asperiores animi nesciunt maxime veritatis magni aut officiis, cumque, velit dignissimos dolorum voluptates?</p>
-           <div><textarea rows="1" cols="20 "></textarea></div> 
+            <p>{{item.neirong}}</p>
+           <div><textarea rows="6" cols="40"></textarea></div> 
             <div id="share">
                 <van-popup class="mengc" v-model="show" :overlay="false">
                    分享到：
@@ -17,7 +17,7 @@
                 </van-popup>
                <span @click="tap()">分享</span>
                 <span>评论</span>
-                <span><van-rate   icon="like" void-icon="like-o" v-model="value" :count="1" />999</span>
+                <span><van-rate   icon="like" void-icon="like-o" v-model="value" :count="1" />{{item.like}}</span>
             </div>
         </div>
     </div>
@@ -55,10 +55,12 @@ export default {
     mounted() {
         var _this = this;
         axios({
-            url:'http://www.jd.com/api/attention'
+            method:"get",
+            url:'/ssm-1.0/atten/ifatten.do',
+            params:{u_id:1}
         }).then((data)=>{
-            console.log(data.data)
-            _this.list = data.data.info
+            console.log(data.data.data)
+            _this.list = data.data.data
         })
     },
 
@@ -92,30 +94,28 @@ p{
     text-align: center;
     line-height: 0.2rem;
     margin: 0.2rem auto;
+    height:0.8rem;
 }
 figure{
     display:flex;
-    align-items: center;
+    /* align-items: center; */
     margin: 0.2rem 0;
     height: 0.5rem;
 }
    figure span{
-       height: 0.44rem;
-       line-height: 0.2rem;
-       text-align: center;
+       height: 0.45rem;
+        width:0.45rem;
        border-radius: 50%
    }
    img{
-       width:0.44rem;
-       height: 0.44rem;
+       width:0.45rem;
+       height: 0.45rem;
         border-radius: 50%
    }
    figure figcaption{
        display: flex;
-       flex: 1;
-        align-items: center;
+       flex-direction: column;
        font-size: 0.14rem;
-       width: 0.65rem;
        height: 0.24rem;
        padding-left: 0.2rem;
    }
@@ -124,6 +124,7 @@ figure{
     height: 0.4rem;
     display: flex;
     justify-content: space-around;
+    align-items: center;
     font-family: Arial;
     color: #5E5E5E;
     font-size: 0.12rem;

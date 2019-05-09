@@ -27,13 +27,20 @@ export default {
            this.$router.push('/detail')
        }
     },
+    mounted() {
+       var  _this = this;
+       axios({
+           method:"get",
+           url:'ssm-1.0/my/head.do',
+           params:{u_id:1}
+       }).then((data)=>{
+           console.log(data.data.data)
+       })
+
+    },
 }
 </script>
 <style scope="">
-/* h2,p,div,figcaption,figure{
-    margin: 0;
-    padding: 0;
-} */
     h2{
         margin-top: 46px;
         width:100%;

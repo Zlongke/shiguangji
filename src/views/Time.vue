@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "Time",
   data() {
@@ -45,6 +47,13 @@ export default {
   },
   mounted() {
     this.$emit("totitle", this.title);
+    var _this = this;
+    axios({
+      url: "/ssm-1.0/my/head.do",
+      params: { id: 1 }
+    }).then(data => {
+      console.log(data.data);
+    });
   },
   methods: {
     onLoad() {

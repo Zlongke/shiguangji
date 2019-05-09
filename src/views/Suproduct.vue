@@ -1,8 +1,10 @@
 <template>
     <div id="contain"> 
-        <aside class="banner" @click="detail()">
-             <h2>优品</h2>
-        </aside>
+        <van-swipe :autoplay="3000" :height="300">
+            <van-swipe-item v-for="(image, index) in images" :key="index">
+                <img :src="image.banner_img_url" />
+            </van-swipe-item>
+        </van-swipe>
        
         <div class="coupon">
             <P>优惠劵</P>
@@ -29,57 +31,68 @@
             <p>宝宝必备</p>
             <p>all</p>
         </div>
-        <article>
-              <figure>
-                <span class="icon"></span>
+        <article id="list" >
+              <figure  v-for="(item,index) in list" :key="index">
+                <span @click="detail(item.pid)" class="icon"><img :src="item.pimg" /></span>
                 <figcaption>
                     <p>一片吸干八次尿</p>
-                    <p>会员价￥999</p>
+                    <p>￥{{item.pprice}}</p>
                 </figcaption>
             </figure>
-            <figure>
-                <span class="icon"></span>
-                <figcaption>
-                    <p>一片吸干八次尿</p>
-                    <p>会员价￥999</p>
-                </figcaption>
-            </figure>
-            <figure>
-                <span class="icon"></span>
-                <figcaption>
-                    <p>一片吸干八次尿</p>
-                    <p>会员价￥999</p>
-                </figcaption>
-            </figure>
-            <figure>
-                <span class="icon"></span>
-                <figcaption>
-                    <p>一片吸干八次尿</p>
-                    <p>会员价￥999</p>
-                </figcaption>
-            </figure>
+           
         </article>
     </div>
 </template>
   
 <script>
+import axios from "axios"
 export default {
     name:'Suproduct',
    data() {
        return {
-           title:'优品'
+           title:'优品',
+           list:'',
+           images:''
+
        }
    },
    methods: {
-       detail(){
-           this.$router.push('/detail')
+       detail(id){
+        //    console.log(id)
+           this.$router.push({name:'Detail',query:{id:id} })
        },
        clean(){
            this.$router.push('/clean')
        }
    },
    mounted() {
-       this.$emit('toTitle',this.title)
+       this.$emit('toTitle',this.title);
+         var _this = this;
+
+            axios({
+                url:'http://jx.xuzhixiang.top/ap/api/bannerlist.php',
+                params:{uid:5484}
+            }).then((data)=>{
+                // console.log(data.data.data)
+                _this.images = data.data.data
+            })
+
+
+
+
+        axios({
+            method:"get",
+            type:'json',
+            url:'http://jx.xuzhixiang.top/ap/api/productlist.php',
+            params:{uid:5484}
+        }).then((data)=>{
+            console.log(data.data)
+            _this.list = data.data.data
+        })
+
+
+
+
    },
 }
 </script>
@@ -90,9 +103,13 @@ export default {
     display: flex;
     flex: 1;
     flex-direction: column;
-    /* width:348px; */
     margin:0 auto;
     padding:0 0.1rem;
+    font-size: 0.12rem;
+
+}
+#list p{
+     font-size: 0.12rem;
 }
 .banner{
     font-size: 0.14rem;
@@ -137,13 +154,13 @@ export default {
     line-height: 0.24rem;
     text-align: center;
     font-size: 0.12rem;
-     color:#A6A4A4;
+    color:#A6A4A4;
 }
 #contain .baby{
     display: flex;
     margin-top:0.3rem;
     justify-content: space-between;
-    font-size: 0.14rem;
+    font-size: 0.12rem;
     color:#777676;
 }
 article{
@@ -156,15 +173,18 @@ article figure{
     height: 1.15rem;
     width:0.88rem;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
+    justify-content: space-around;
 
 } 
-article figure span{
+article figure span img{
     width:0.86rem;
     height: 0.86rem;
     border:1px solid #BBBBBB;
 }
-article figcaption{
+article figure figcaption{
+    height:0.16rem;
     font-size: 0.12rem;
     color: #101010;
     line-height: 0.17rem;

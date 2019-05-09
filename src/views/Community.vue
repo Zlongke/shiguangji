@@ -28,11 +28,11 @@
             <figure>
                 <span><img :src="item.img" /></span>
                 <figcaption>
-                    <div><span>vivi妈妈</span><span>2秒前 宝宝2岁+关注</span></div>
+                    <div><span>{{item.name}}</span><span>2秒前 宝宝2岁+关注</span></div>
                 </figcaption>
             </figure>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel adipisci at ut laudantium ducimus accusamus cupiditate voluptatibus, asperiores animi nesciunt maxime veritatis magni aut officiis, cumque, velit dignissimos dolorum voluptates?</p>
-           <div><textarea rows="1" cols="20 "></textarea></div> 
+            <p>{{item.neirong}}</p>
+           <div><textarea rows="6" cols="40 "></textarea></div> 
             <div id="share">
                 <van-popup class="mengc" v-model="show" :overlay="false">
                    分享到：
@@ -41,7 +41,7 @@
                 </van-popup>
                <span @click="tap()">分享</span>
                 <span>评论</span>
-                <span><van-rate   icon="like" void-icon="like-o" v-model="value" :count="1" />999</span>
+                <span><van-rate   icon="like" void-icon="like-o" v-model="value" :count="1" />{{item.like}}</span>
             </div>
         </div>
     </div>
@@ -79,9 +79,11 @@ export default {
          this.$emit('toTitle',this.title);
         var _this = this;
        axios({
-           url:'http://www.jd.com/api/attention'
+           method:'get',
+           url:'/ssm-1.0/atten/findall.do',
+           params:{u_id:1}
        }).then((data)=>{
-           _this.list = data.data.info 
+           _this.list = data.data.data
        })
     },
 }
@@ -105,13 +107,14 @@ export default {
     display: flex;
     flex: 1;
     height: 0.7rem;
-    background: blueviolet;
     position: relative;
     font-size: 0.12rem;
 }
 .snav figure{
+    display: flex;
+    flex-direction: column;
     margin: 0.1rem 0.15rem 0 0.15rem;
-    text-align: center;    
+    justify-content: space-around;  
 }
 .snav figure span{
        position: absolute;
@@ -125,9 +128,9 @@ export default {
        border-radius: 50%
    }
 .snav  figure figcaption{
-       width: 0.44rem;
+       width: 0.4rem;
        height: 0.44rem;
-       text-align: center;
+       /* text-align: center; */
        line-height: 0.17rem;
        margin-top: 0.2rem;
    }
@@ -152,31 +155,29 @@ p{
     text-align: center;
     line-height: 0.2rem;
     margin: 0.2rem auto;
+     height:0.8rem;
 }
 figure{
     display:flex;
-    justify-content: space-around;
+    align-items: center;
     margin: 0.2rem 0;
     height: 0.5rem;
 }
    figure span{
-       height: 0.44rem;
-       line-height: 0.2rem;
-       text-align: center;
+       height: 0.45rem;
+        width:0.45rem;
        border-radius: 50%
    }
    img{
-       width:0.44rem;
-       height: 0.44rem;
+       width:0.45rem;
+       height: 0.45rem;
         border-radius: 50%
    }
    figure figcaption{
        display: flex;
-       flex: 1;
-        align-items: center;
+       flex-direction: column;
        font-size: 0.14rem;
-       width: 0.65rem;
-       height: 0.44rem;
+       height: 0.24rem;
        padding-left: 0.2rem;
    }
 .nav #share{
@@ -184,6 +185,7 @@ figure{
     height: 0.4rem;
     display: flex;
     justify-content: space-around;
+    align-items: center;
     font-family: Arial;
     color: #5E5E5E;
     font-size: 0.12rem;

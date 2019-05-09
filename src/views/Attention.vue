@@ -3,25 +3,14 @@
         <p>关注你感兴趣的人</p>
         <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
             <div class="nav">
-                <figure>
+                <figure v-for="(item,index) in list" :key="index">
                     <span>
                         <img src="" />
                         <van-rate  icon="passed"  :size="10" void-icon="passed" v-model="value" :count="1" class="icon" />
                     </span>
-                    <figcaption>生活达人</figcaption>
+                    <figcaption>{{item.name}}</figcaption>
                 </figure>
-                <figure>
-                   <span><img src="" /></span>
-                    <figcaption>生活达人</figcaption>
-                </figure>
-                <figure>
-                    <span><img src="" /></span>
-                    <figcaption>生活达人</figcaption>
-                </figure>
-                <figure>
-                    <span><img src="" /></span>
-                    <figcaption>生活达人</figcaption>
-                </figure>
+               
             </div>
         </van-pull-refresh>
          <van-button class="btn" round type="danger" to="/afterattention">一键关注</van-button>
@@ -35,7 +24,7 @@ export default {
     name:'Attention',
    data(){
        return{
-           data:[],
+           list:[],
            isLoading:false,
            value:0
        }
@@ -48,15 +37,17 @@ export default {
             }, 500);
        }
    },
-    // mounted() {
-    //       var  _this = this;
-    //     axios({
-    //         url:'http://www.jd.com/api/attention'
-    //     }).then((data) => {
-    //         console.log(data.data)
-    //         _this.data  = data.data.info
-    //     })
-    // },
+    mounted() {
+          var  _this = this;
+        axios({
+            method:"get",
+            url:'/ssm-1.0/atten/findall.do',
+            params:{u_id:1}
+        }).then((data) => {
+            console.log(data.data.data)
+           _this.list = data.data.data
+        })
+    },
 
 }
 </script>
@@ -72,18 +63,17 @@ export default {
   }
 .nav{
      display: flex;
-    flex-wrap: wrap;
+     flex-wrap: wrap;
    justify-content: space-around;
-    margin: 0.12rem;
      font-size: 0.12rem;
 }
-    figure{
-        width:1.1rem;
-        height: 1.25rem;
-        display: flex;
-       flex-direction: column;
-       justify-content: center;
-       align-items: center;
+ figure{
+    width:1.2rem;
+    height: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     }
    figure span{
        position: relative;
