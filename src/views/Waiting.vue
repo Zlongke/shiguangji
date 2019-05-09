@@ -6,47 +6,61 @@
             </van-col>
         </van-row>
         
-        <div class="mine">
-            <figure>
-            <img src="">
-            <figcaption>
-                <p>{{daoda}}</p>
-                <p>配送员 {{peis}} 正在配送</p>
-                <div>
-                    <van-button round  size="small">取消订单</van-button>
-                    <van-button round  size="small">联系配送员</van-button>
-                    <van-button round  size="small">催单</van-button>
-                </div>
-            </figcaption>
-            </figure>
-        </div>
-          
-       
-        <div id="info">
-            <p>商品信息</p>
-            <div class="img">
+        <div>
+            <div class="mine">
+                <figure>
                 <img src="">
-                <img src="">
-                <img src="">
+                <figcaption>
+                    <p>{{daoda}}</p>
+                    <p>配送员{{peis}}</p>
+                    <div>
+                        <van-button round  size="small">取消订单</van-button>
+                        <van-button round  size="small">联系配送员</van-button>
+                        <van-button round  size="small">催单</van-button>
+                    </div>
+                </figcaption>
+                </figure>
             </div>
-            <van-cell-group class="neirong">
-            <van-cell title="商品总价" value="￥999" />
-            <van-cell title="配送费" value="免运费" />
-            <van-cell title="运费险" value="卖家赠送" />
-             <van-cell title="" value="总计：￥233" />
-            </van-cell-group>
+            
+        
+            <div id="info">
+                <p>商品信息</p>
+                <div class="img">
+                    <img src="">
+                    <img src="">
+                    <img src="">
+                </div>
+                <van-cell-group class="neirong">
+                <van-cell title="商品总价" value="￥999" />
+                <van-cell title="配送费" value="免运费" />
+                <van-cell title="运费险" value="卖家赠送" />
+                <van-cell title="" value="总计：￥233" />
+                </van-cell-group>
+            </div>
         </div>
-
     </div>
 </template>
 <script>
+import axios from "axios"
 export default {
     name:'Waiting',
     data() {
         return {
             daoda:'预计明天到达',
             peis:'张师傅',
+            list:[]
         }
+    },
+    mounted() {
+        var _this = this;
+        axios({
+            method:'get',
+            url:'/ssm-1.0/order/findAll.do',
+            params:{u_id:1}
+        }).then((data)=>{
+            console.log(data.data.data)
+            _this.list = data.data.data
+        })
     },
 }
 </script>

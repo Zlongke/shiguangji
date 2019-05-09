@@ -7,17 +7,18 @@
 
       <van-cell-group>
         <van-field v-model="yzm" center clearable label="短信验证码" placeholder="请输入短信验证码">
-          <van-button slot="button" size="small" type="primary" @click="tap1()">发送验证码</van-button>
+          <van-button slot="button" size="small" type="primary" @click="tap2()">发送验证码</van-button>
         </van-field>
       </van-cell-group>
     </van-cell-group>
 
-    <van-button class="bottom" type="warning" size="large" @click="tap2()">注册</van-button>
+    <van-button class="bottom" type="warning" size="large" @click="tap1()">注册</van-button>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import qs from "qs";
 export default {
   name: "Regist",
   data() {
@@ -32,14 +33,16 @@ export default {
     tap1() {
       var _this = this;
       axios({
-        url: "http://localhost:3000/regist",
-        params: { id: "0", phonenum: _this.phonenum }
+        method: "post",
+        //headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        url: "/ssm-1.0/user/add.do",
+        data: qs.stringify({ name: _this.phonenum, password: _this.password })
       }).then(data => {
         console.log(data.data);
       });
     },
     tap2() {
-      var _this = this;
+      /* var _this = this;
       axios({
         url: "http://localhost:3000/regist",
         params: {
@@ -50,7 +53,7 @@ export default {
         }
       }).then(data => {
         console.log(data.data);
-      });
+      }); */
     }
   }
 };

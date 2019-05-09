@@ -11,7 +11,15 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      
+      '/ssm-1.0': {
+        target: "http://39.104.69.163:8081",
+        changeOrigin: true,
+        secure: false,
+        pathRewrith: {
+          '^/ssm-1.0': '/ssm-1.0'
+        }
+      }
+
     },
 
     // Various Dev Server settings
@@ -22,7 +30,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */

@@ -20,7 +20,6 @@ import 'vue-social-share/dist/client.css';
 Vue.use(Share)
 
 
-import './mockinfo/attention'
 
 Vue.use(Vant);
 

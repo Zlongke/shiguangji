@@ -61,6 +61,7 @@
     </div>
 </template>
 <script>
+import axios from "axios"
 export default {
     name:'Vipcenter',
     data() {
@@ -73,7 +74,16 @@ export default {
         }
     },
     mounted() {
-        this.$emit('toTitle',this.title)
+        this.$emit('toTitle',this.title);
+        var _this = this;
+        axios({
+            method:"get",
+            url:'ssm-1.0/headlist/queryoneall.do',
+            params:{u_id:1}
+        }).then((data)=>{
+           console.log(data.data.data);
+            
+        })
     },
     methods: {
         detail(){

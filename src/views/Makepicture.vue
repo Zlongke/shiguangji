@@ -13,11 +13,9 @@
             </van-col>
             <van-col span="10">
                 <div id="make">
-                    <p>宝宝成长相册</p>
-                        
+                    <p>宝宝成长相册</p>                
                     <div>
-                        <p><span>¥199.9</span><span class="icon"><van-icon name="like-o" /></span></p>
-                      
+                        <p><span>¥199.9</span><span class="icon"><van-icon name="like-o" /></span></p>            
                     </div>
                 </div>
             </van-col>
@@ -25,6 +23,7 @@
     </div>
 </template>
 <script>
+import axios from "axios"
 export default {
     name:'Makepicture',
     data() {
@@ -35,7 +34,15 @@ export default {
         }
     },
     mounted() {
-        this.$emit('toTitle',this.title)
+        this.$emit('toTitle',this.title);
+        var _this = this;
+        axios({
+            method:"get",
+            url:'/ssm-1.0/photolist/addphotolist.do',
+            params:{u_id:1}
+        }).then((data)=>{
+            console.log(data.data.data)
+        })
     },
 
 }

@@ -9,12 +9,12 @@
     </van-col>
     </van-row>
      <van-row type="flex"  align="center">
-    <van-col span="12" >
-        <div class="spa">
-            <span></span>
-            <p>待付款</p>
-        </div>   
-    </van-col>
+        <van-col span="12" >
+            <div class="spa" @click="unpay">
+                <span></span>
+                <p>待付款</p>
+            </div>   
+        </van-col>
     </van-row>
     <van-row type="flex"  align="center">
         <van-col span="12" >
@@ -26,7 +26,7 @@
     </van-row>
      <van-row type="flex"  align="center">
     <van-col span="12" >
-        <div class="spa">
+        <div class="spa" >
             <span></span>
             <p>待发货</p>
         </div>   
@@ -51,20 +51,32 @@
     </div>
 </template>
 <script>
+import axios from "axios"
 export default {
     name:'Order',
     data() {
         return {
             title:'我的订单',
+            list:[],
         }
     },
     methods: {
         wait(){
             this.$router.push('/waiting')
-        } 
+        },
+       unpay(){
+            this.$router.push('/unpay')
+            }
     },
     mounted() {
-        this.$emit('toTitle',this.title)
+        this.$emit('toTitle',this.title),
+        axios({
+            method:'get',
+            url:'/ssm-1.0/order/findAll.do',
+            params:{u_id:1}
+        }).then((data)=>{
+            console.log(data.data.data)
+        })
     },
 
 }

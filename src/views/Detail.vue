@@ -5,22 +5,20 @@
                 <van-icon name="search" slot="right" />
             </van-nav-bar>
         </header>
-        <van-row type="flex" justify="center">
+        <van-row type="flex" justify="center" >
             <van-col span="24">
-                 <van-swipe :autoplay="3000" :height='200'>
-                    <van-swipe-item v-for="(item, index) in data" :key="index">
-                        <img src="data.img" />
-                    </van-swipe-item>
-                </van-swipe>
+                 <aside class="banner">
+                    <h2><img :src="detail.pimg" /></h2>
+                </aside>
             </van-col>
         
         </van-row>
 
-        <van-row type="flex" justify="center">
+        <van-row type="flex" justify="center" >
             <van-col span="24" tag="aside">
                 <aside>
-                    <p style="font-size:0.16rem">秋冬宝宝加棉保暖套装</p>
-                    <van-button :class="{'yangshi':'cla'}" round size="mini">￥999</van-button>
+                    <p style="font-size:0.16rem">{{detail.pname}}</p>
+                    <van-button :class="{'yangshi':'cla'}" round size="mini">￥{{detail.pprice}}</van-button>
                     <van-button  :class="{'yangshi':'cla'}" round size="mini">好评99%</van-button>
                     <span class="price">会员价：￥99</span>
                 </aside>
@@ -54,13 +52,13 @@
                 <figure>
                     <p>vivi妈妈</p>
                     <figcaption>
-                        <p>宝贝很好，材质很好，手感也很柔软，适合宝宝穿</p>                  
+                        <p>{{detail.pname}}</p>                  
                     </figcaption>
                 </figure>
            </div>
         <div class="btn">  
-            <van-button :class="{'classb':'btn'}" size="normal" to="/addcart">加入购物车</van-button>
-            <van-button :class="{'classb':'btn'}" size="normal" to="/buy">立即购买</van-button>
+            <van-button :class="{'classb':'btn'}" size="normal" @click="addcart(detail.pid)">加入购物车</van-button>
+            <van-button :class="{'classb':'btn'}" size="normal" @click="buy(detail.pid)">立即购买</van-button>
          </div>
         
         </section>
@@ -70,33 +68,40 @@
 
 </template>
 <script>
-import axios from 'axios';
+import axios from "axios"
 export default {
     name:'Detail',
     data() {
-        return {
-           data:[],
+        return {  
            cla:true,
             clb:true,
-            btn:true
+            btn:true,
+            detail:''
         }
     },
     methods: {
        onClickLeft(){
            this.$router.go(-1)
+       },
+       addcart(id){
+           console.log(id)
+           this.$router.push({name:'Addcart',query:{id:id}})
+       },
+       buy(id){
+            this.$router.push({name:'Buy',query:{id:id}})
        }
     },
-    mounted() {
+    mounted() {  
         var _this = this;
+
         axios({
-            method:'get',
-            url:' http://jx.xuzhixiang.top/ap/api/bannerlist.php',
-            params:{uid:6436}
+            url:'http://jx.xuzhixiang.top/ap/api/detail.php',
+            params:{id:_this.$route.query.id}
         }).then((data)=>{
-            console.log(data.data)
-            // _this.data = data.data.info
+            console.log(data.data.data)
+            _this.detail = data.data.data
         })
-    },  
+    }
 }
 </script>
 <style scope="">
@@ -104,6 +109,13 @@ section{
      width:304px;
     height: 53px;
      margin: 0 auto;
+}
+.banner img{
+    font-size: 0.14rem;
+    margin-top: 0.46rem;
+    height: 2.6rem;
+    background: #A6A4A4;
+    border-radius: 0.12rem;
 }
 aside{
     text-align: center
