@@ -54,7 +54,7 @@ import Coupon from '@/views/Coupon'
 import Waiting from '@/views/Waiting'
 
 import Daoruxiangce from '@/views/Daoruxiangce'
-
+import Quanbu from '@/views/Quanbu'
 Vue.use(Router)
 
 export default new Router({
@@ -460,6 +460,11 @@ export default new Router({
       path: '/chengjiu',
       name: ' Chengjiu',
       component: Chengjiu
+    },
+    {
+      path: '/quanbu',
+      name: ' Quanbu',
+      component: Quanbu
     },
     {
       path: '/yyshipu',
