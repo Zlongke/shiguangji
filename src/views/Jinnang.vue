@@ -1,63 +1,74 @@
 <template>
   <div>
-    <h1>{{username}}</h1>
- <router-link to="/jiuniang">
-<van-swipe :autoplay="3000" indicator-color="#fff" height="150">
-  <van-swipe-item style="background:red">1</van-swipe-item>
-  <van-swipe-item style="background:yellow">2</van-swipe-item>
-  <van-swipe-item style="background:green">3</van-swipe-item>
-  <van-swipe-item style="background:blue">4</van-swipe-item>
+
+ <!-- <router-link to="/jiuniang"> -->
+<van-swipe :autoplay="3000" :height="150">
+  <van-swipe-item v-for="(image,index) in images" :key="index">
+    <img  :src="image.photo" />
+  </van-swipe-item>
 </van-swipe>
-</router-link>
-<p>
+<!-- </router-link> -->
+
+
+
+<section>
     <router-link class="sp" to="/shipu">锦囊</router-link>
    <router-link class="sp" to="/baike">百科</router-link>
     <router-link class="sp" to="/wenda">问答</router-link>
-</p>
-<van-card
+</section>
 
-  price="2.00"
-  desc="描述信息"
-  title="商品标题"
-  :thumb="imageURL"
-/>
-<van-card
 
-  price="2.00"
-  desc="描述信息"
-  title="商品标题"
-  :thumb="imageURL"
-/>
+<router-link to="/shipu">
 <van-card
-
-  price="2.00"
-  desc="描述信息"
-  title="商品标题"
-  :thumb="imageURL"
+  v-for="item in list"
+  :num="item.size"
+  :desc="item.namelist"
+  :key="item.id"
+  :thumb="item.photo"
 />
+</router-link>
+
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 import { mapState } from "vuex";
 export default {
   name: "Jinnang",
   data() {
     return {
-      title: "锦囊"
+      title: "锦囊",
+      images:[],
+      list:[]
     };
   },
    methods: {
     tap(msg) {
-      //console.log(msg)
       this.title = msg;
+    },
+    getMsg(){
+      console.log(this.images)
     }
   },
-  computed: {
-    ...mapState(["username"])
-  },
+
   mounted() {
     this.$emit("totitle", this.title);
+    var _this=this;
+    axios({
+      url:'ssm-1.0/homepage/querythreeall.do',
+
+    }).then((data)=>{
+       console.log('tupian1',data.data)
+       _this.images=data.data.data
+    }),
+     axios({
+      url:'ssm-1.0/homepage/querythreeall.do',
+
+    }).then((data)=>{
+       console.log('tupian2',data.data)
+       _this.list=data.data.data
+    })
   },
 
 
@@ -66,7 +77,7 @@ export default {
 </script>
 
 <style scoped="">
-p{height:20px;
+section{height:20px;
 background:gainsboro;
 
 font-size:14px;
@@ -74,4 +85,5 @@ color:black}
 .sp{
   margin-left:60px
 }
+img{width: 380px;height:150px;}
 </style>

@@ -8,28 +8,26 @@
       @click-left="onClickLeft"
       @click-right="onClickRight"
     />
+<van-row id="nr" >
+
+</van-row>
 <van-popup  class="tanchu" v-model="show" position="bottom"
- close-on-click-overlay="true" :overlay="true">
-<van-tabbar class="di" v-model="active">
-      <div class="kuang">
-     <span><van-icon name="volume"/></span>
-     <input type="text" @click="taa()">
-     <span><van-icon name="smile-o"/></span>
-     <span><van-icon name="add"/></span>
-      </div>
+       :close-on-click-overlay="true" :overlay="true">
+    <van-tabbar class="di" >
+            <div class="kuang">
+                  <span><van-icon name="volume"/></span>
+                  <input type="text" id="chuanzhi" value=""/>
+                  <span><van-icon name="smile-o"/></span>
+                  <span><van-icon name="add"/></span>
+                  <button class="aniu"  @click="taa()">发送</button>
+            </div>
     </van-tabbar>
-
-
-
-
-
-
 </van-popup>
 
-    <van-tabbar class="di" v-model="active">
+    <van-tabbar class="di">
       <div class="kuang">
      <span><van-icon name="volume"/></span>
-     <input type="text" @click="taa()">
+     <input type="textarea"  @click="tap()">
      <span><van-icon name="smile-o"/></span>
      <span><van-icon name="add"/></span>
       </div>
@@ -38,6 +36,8 @@
   </div>
 </template>
 <script>
+
+document.getElementById('chuanzhi');
 import 'vant/lib/icon/local.css';
 export default {
 
@@ -56,10 +56,11 @@ export default {
       Toast("按钮");
     },
     tap(){
-    this.show=!this.show;
+       this.show=!this.show;
     },
     taa(){
-      this.show=!this.show;
+
+      nr.innerHTML=nr.innerHTML+chuanzhi.value+"<br>";
     }
 },
 
@@ -71,7 +72,7 @@ export default {
   height:200px}
   .di{
     height:60px;
-    width:380px;
+    width:420px;
     text-align: center;
       background:grey;
 
@@ -84,4 +85,8 @@ export default {
 .tanchu .di{margin-bottom:145px}
 span{font-size:30px;
 line-height:60px}
+.anniu{width:100px;height:60px;}
+#nr{width:400px;
+height:400px;
+background:burlywood}
 </style>

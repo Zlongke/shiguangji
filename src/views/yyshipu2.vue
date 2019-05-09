@@ -12,12 +12,11 @@
 
     <!-- <Head :name="title"/> -->
     <div class="container">
-      <router-view @totitle="tap"></router-view>
+      <router-view ></router-view>
     </div>
 
     <van-tabbar v-model="active" class="liebiao" >
       <van-tabbar-item  class="lb" to="/fenlei">阶段</van-tabbar-item>
-
       <van-tabbar-item  class="lb" to="/feilei2">功效</van-tabbar-item>
       <van-tabbar-item  class="lb" to="">五谷</van-tabbar-item>
       <van-tabbar-item  class="lb" to="">肉蛋类</van-tabbar-item>
@@ -69,7 +68,7 @@ export default {
   width:100px;
   height:400px;
   display: flex;
- background:pink;
+ background:gainsboro;
  flex-direction:column;
  margin-top: 45px;
 position: fixed;
