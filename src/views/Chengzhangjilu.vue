@@ -64,7 +64,7 @@ export default {
     var _this = this;
     axios({
       url: "/ssm-1.0/growup/growup.do",
-      params: { u_id: _this.$store.state.u_id }
+      params: { u_id: 1 }
     }).then(data => {
       console.log(data.data);
       _this.chengjiuList = data.data.data;
@@ -91,7 +91,7 @@ export default {
       var _this = this;
       axios({
         url: "/ssm-1.0/growup/addgrowup.do",
-        detail: "",
+
         params: {
           data: _this.date,
           size: _this.size,
@@ -99,7 +99,7 @@ export default {
           height: _this.height,
           head: _this.head,
           weight: _this.weight,
-          u_id: _this.$store.state.u_id
+          u_id: 1
         }
       }).then(data => {
         console.log(data.data);
