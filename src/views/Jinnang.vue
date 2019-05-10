@@ -66,7 +66,7 @@ export default {
 };
 </script>
 
-<style scoped="">
+<style scoped>
 section {
   height: 0.2rem;
   background: gainsboro;

@@ -285,69 +285,68 @@ export default new Router({
     },
 
 
-  //  生活详情
-  {
-    path:'/detail',
-    name:'Detail',
-    component:Detail,
-  },
-  {
-    path:'/addcart',
-    name:'Addcart',
-    component:Addcart
-  },
-  {
-    path:'/buy',
-    name:'Buy',
-    component:Buy
-  },
-// 我的
-  {
-    path:'/minepublic',
-    redirect:'/vipcenter',
-    name:'Minepublic',
-    component:Minepublic,
-    children:[
-      {
-        path:'/vipcenter',
-        name:'Vipcenter',
-        component:Vipcenter
-      },
-      {
-        path:'/makepicture',
-        name:'Makepicture',
-        component:Makepicture
-      },
-      {
-        path:'/collect',
-        name:'Collect',
-        component:Collect
-      },
-      {
-        path:'/cart',
-        name:'Cart',
-        component:Cart
-      },
-      {
-        path:'/order',
-        name:'Order',
-        component:Order
-      },
-      {
-        path:'/coupon',
-        name:'Coupon',
-        component:Coupon
-      },
+    //  生活详情
+    {
+      path: '/detail',
+      name: 'Detail',
+      component: Detail,
+    },
+    {
+      path: '/addcart',
+      name: 'Addcart',
+      component: Addcart
+    },
+    {
+      path: '/buy',
+      name: 'Buy',
+      component: Buy
+    },
+    // 我的
+    {
+      path: '/minepublic',
+      redirect: '/vipcenter',
+      name: 'Minepublic',
+      component: Minepublic,
+      children: [{
+          path: '/vipcenter',
+          name: 'Vipcenter',
+          component: Vipcenter
+        },
+        {
+          path: '/makepicture',
+          name: 'Makepicture',
+          component: Makepicture
+        },
+        {
+          path: '/collect',
+          name: 'Collect',
+          component: Collect
+        },
+        {
+          path: '/cart',
+          name: 'Cart',
+          component: Cart
+        },
+        {
+          path: '/order',
+          name: 'Order',
+          component: Order
+        },
+        {
+          path: '/coupon',
+          name: 'Coupon',
+          component: Coupon
+        },
 
 
-    ]
-  },
-// 待收货
-  {
-    path: '/waiting',
-    name: 'Waiting',
-    component: Waiting
-  },
+      ]
+    },
+    // 待收货
+    {
+      path: '/waiting',
+      name: 'Waiting',
+      component: Waiting
+    },
 
 
 
@@ -479,7 +478,7 @@ export default new Router({
       name: 'Waiting',
       component: Waiting
     },
-// 代发货
+    // 代发货
     {
       path: '/unpay',
       name: 'Unpay',
