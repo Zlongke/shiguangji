@@ -40,8 +40,7 @@ export default {
     return {
       title: "成就",
       cname: "",
-      message: "",
-      chengjiu: {}
+      message: ""
     };
   },
   methods: {
@@ -53,12 +52,14 @@ export default {
     },
     addChengjiu() {
       var _this = this;
-      _this.chengjiu.cname = _this.cname;
-      _this.chengjiu.cnamelist = _this.message;
-      console.log(_this.chengjiu);
       axios({
         url: "/ssm-1.0/photolist/addphotolist.do",
-        params: { chengJiu: _this.chengjiu }
+        params: {
+          c_id: 1,
+          cname: _this.cname,
+          cnamelist: _this.cnamelist,
+          u_id: 1
+        }
       }).then(data => {
         console.log(data.data.data);
       });
