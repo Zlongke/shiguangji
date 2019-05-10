@@ -11,19 +11,19 @@
         </div>
         <div id="snav">
             <figure @click="clean()">
-                <span class="icon"></span>
+                <span class="icon"><img :src="image.photourl" /></span>
                 <figcaption>清洁</figcaption>
             </figure>
              <figure>
-                <span class="icon"></span>
+                <span class="icon"><img :src="image.photourl" /></span>
                 <figcaption>喂养</figcaption>
             </figure>
              <figure>
-                <span class="icon"></span>
+                <span class="icon"><img :src="image.photourl" /></span>
                 <figcaption>童装</figcaption>
             </figure>
              <figure>
-                <span class="icon"></span>
+                <span class="icon"><img :src="image.photourl" /></span>
                 <figcaption>更多</figcaption>
             </figure>
         </div>
@@ -35,7 +35,7 @@
               <figure  v-for="(item,index) in list" :key="index">
                 <span @click="detail(item.pid)" class="icon"><img :src="item.pimg" /></span>
                 <figcaption>
-                    <p>一片吸干八次尿</p>
+                    <p>笛莎2018春秋</p>
                     <p>￥{{item.pprice}}</p>
                 </figcaption>
             </figure>
@@ -52,7 +52,8 @@ export default {
        return {
            title:'优品',
            list:'',
-           images:''
+           images:'',
+           image:''
 
        }
    },
@@ -91,7 +92,14 @@ export default {
         })
 
 
-
+          axios({
+           method:'get',
+           url:'/ssm-1.0//headlist/queryoneall.do',
+        //    params:{u_id:1}
+       }).then((data)=>{
+           console.log(data.data.data)
+           _this.image = data.data.data
+       })
 
    },
 }
@@ -139,7 +147,7 @@ export default {
     align-items:center;
     justify-content: space-around;  
 }
-#contain #snav figure .icon{
+#contain #snav figure .icon img{
     height:0.44rem;
     width:0.44rem;
     font-size: 0.15rem;

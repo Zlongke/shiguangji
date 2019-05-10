@@ -20,7 +20,7 @@
                     <p style="font-size:0.16rem">{{detail.pname}}</p>
                     <van-button :class="{'yangshi':'cla'}" round size="mini">￥{{detail.pprice}}</van-button>
                     <van-button  :class="{'yangshi':'cla'}" round size="mini">好评99%</van-button>
-                    <span class="price">会员价：￥99</span>
+                    <span class="price">会员价：￥{{detail.pprice}}</span>
                 </aside>
             </van-col>
         </van-row>
@@ -44,7 +44,7 @@
                 </figure>
             </div>
             <div class="pingjia">
-                 <van-button :class="{'yangshia':'clb'}"  round  size="small">评价</van-button>
+                 <van-button to="/appraise" :class="{'yangshia':'clb'}"  round  size="small">评价</van-button>
                 <van-button :class="{'yangshia':'clb'}" round size="small">规格</van-button>
             </div>
            
@@ -76,7 +76,7 @@ export default {
            cla:true,
             clb:true,
             btn:true,
-            detail:''
+            detail:'',
         }
     },
     methods: {
@@ -114,8 +114,8 @@ section{
     font-size: 0.14rem;
     margin-top: 0.46rem;
     height: 2.6rem;
-    background: #A6A4A4;
     border-radius: 0.12rem;
+    background: #A6A4A4;
 }
 aside{
     text-align: center

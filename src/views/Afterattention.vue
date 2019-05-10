@@ -2,7 +2,7 @@
     <div class="container">
         <div class="nav clearfix" v-for="(item,i) in list" :key="i">
             <figure  >
-                <span><img :src="item.img" /></span>
+                <span><img :src="photo.photourl" /></span>
                 <figcaption>
                     <div><span>{{item.name}}</span><span>3秒前 宝宝2岁</span></div>
                 </figcaption>
@@ -31,6 +31,7 @@ export default {
     data() {
         return {
             list:[],
+            photo:'',
             value:1,
             show:false,
             config:{
@@ -62,6 +63,16 @@ export default {
             console.log(data.data.data)
             _this.list = data.data.data
         })
+
+         axios({
+            method:"get",
+            url:'/ssm-1.0/headlist/queryoneall.do',
+            params:{u_id:1}
+        }).then((data) => {
+            console.log(data.data.data)
+           _this.photo = data.data.data
+        })
+
     },
 
 }

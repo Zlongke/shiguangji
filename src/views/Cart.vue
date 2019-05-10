@@ -2,7 +2,7 @@
     <div id="cart">
         <van-row v-for="(item,index) in cart" :key=index type="flex" justify="center" align="center" class="list">
             <van-col span="2"> <van-checkbox v-model="checked"></van-checkbox></van-col> 
-            <van-col span="18" >
+            <van-col span="20" >
                 <van-card
                 :num="item.pnum"
                 :price="item.pprice"
@@ -24,9 +24,9 @@
         </van-row>
 
          <van-row  type="flex" justify="space-around" align="center">
-             <div class="list">
-                <van-col span="8" v-for="(item,index) in list" :key="index">
-                    <div id="nav">
+             <div class="list" v-for="(item,index) in list" :key="index">
+                <van-col span="10" >
+                    <div id="nav" >
                         <img class="img" :src="item.pimg" />
                         <p>{{item.pname}}</p>
                         <p>会员价￥{{item.pprice}}</p>

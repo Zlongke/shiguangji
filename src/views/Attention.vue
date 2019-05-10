@@ -5,11 +5,12 @@
             <div class="nav">
                 <figure v-for="(item,index) in list" :key="index">
                     <span>
-                        <img src="" />
+                        <img :src="photo.photourl" />
                         <van-rate  icon="passed"  :size="10" void-icon="passed" v-model="value" :count="1" class="icon" />
                     </span>
                     <figcaption>{{item.name}}</figcaption>
                 </figure>
+              
                
             </div>
         </van-pull-refresh>
@@ -25,6 +26,7 @@ export default {
    data(){
        return{
            list:[],
+           photo:'',
            isLoading:false,
            value:0
        }
@@ -44,9 +46,20 @@ export default {
             url:'/ssm-1.0/atten/findall.do',
             params:{u_id:1}
         }).then((data) => {
-            console.log(data.data.data)
+            // console.log(data.data.data)
            _this.list = data.data.data
         })
+
+         axios({
+            method:"get",
+            url:'/ssm-1.0/headlist/queryoneall.do',
+            params:{u_id:1}
+        }).then((data) => {
+            console.log(data.data.data)
+           _this.photo = data.data.data
+        })
+
+
     },
 
 }

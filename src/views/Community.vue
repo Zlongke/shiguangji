@@ -1,32 +1,32 @@
 <template>
     <div>
-        <h2>社区</h2>
+        <h2><img :src="images.photourl"/></h2>
          <div class="snav">
             <figure>
-                <span></span>
+                <span><img :src="images.photourl" /></span>
                 <figcaption>备孕</figcaption>
             </figure>
              <figure>
-                <span></span>
+                <span><img :src="images.photourl" /></span>
                 <figcaption>备期</figcaption>
             </figure>
              <figure>
-                <span></span>
+                <span><img :src="images.photourl" /></span>
                 <figcaption>育儿</figcaption>
             </figure>
 
              <figure>
-                <span></span>
+                <span><img :src="images.photourl" /></span>
                 <figcaption>家常</figcaption>
             </figure>
             <figure>
-                <span></span>
+                <span><img :src="images.photourl" /></span>
                 <figcaption>旅行</figcaption>
             </figure>
         </div>
        <div class="nav clearfix" v-for="(item,i) in list" :key="i">
             <figure>
-                <span><img :src="item.img" /></span>
+                <span><img :src="images.photourl" /></span>
                 <figcaption>
                     <div><span>{{item.name}}</span><span>2秒前 宝宝2岁+关注</span></div>
                 </figcaption>
@@ -54,6 +54,7 @@ export default {
     data() {
         return {
             list:[],
+           images:'',
             title:'社区',
             value:1,
             show:false,
@@ -85,8 +86,21 @@ export default {
        }).then((data)=>{
            _this.list = data.data.data
        })
+
+
+        axios({
+           method:'get',
+           url:'/ssm-1.0//headlist/queryoneall.do',
+        //    params:{u_id:1}
+       }).then((data)=>{
+           console.log(data.data.data)
+           _this.images = data.data.data
+       })
     },
 }
+
+
+
 </script>
 
 <style scope="">
@@ -101,7 +115,7 @@ export default {
         font-size: 0.16rem;
         width: 3.75rem;
         height: 1.3rem;
-        background: #A6A4A4;
+        background: #6666
     }
 .snav{
     display: flex;
@@ -109,6 +123,7 @@ export default {
     height: 0.7rem;
     position: relative;
     font-size: 0.12rem;
+     background: #6666
 }
 .snav figure{
     display: flex;
